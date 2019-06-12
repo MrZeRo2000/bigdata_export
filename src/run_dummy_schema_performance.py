@@ -8,12 +8,15 @@ from timeit import default_timer as timer
 import logging
 import csv
 import datetime
+import concurrent.futures
 
 
 class DummySchemaPerformanceRunner:
     URL = "https://gsq0mgv1i6.execute-api.eu-central-1.amazonaws.com/int/dummyevent"
     HEADERS = {"content-type": "application/json", "x-api-key": "HdnVmPVaPn8vq8pY3Zcs123oztXfBnPy9TGRIR63"}
     BATCH_SIZES = range(1, 100)
+    PARALLEL_SIZE = 100
+    PARALLEL_NUMBER = 10
 
     LOG_FORMAT = "%(asctime)s %(levelname)s %(name)s %(module)s %(message)s"
     """Log format"""
@@ -30,6 +33,7 @@ class DummySchemaPerformanceRunner:
         self.__data_generator.prepare()
 
         self.__stats_file_name = os.path.join(script_dir, "../data", "stats.txt")
+        self.__parallel_stats_file_name = os.path.join(script_dir, "../data", "parallel_stats.txt")
 
         self.__schema_data_generator = SchemaDataGenerator(self.__schema_data, self.__data_generator)
 
@@ -60,6 +64,10 @@ class DummySchemaPerformanceRunner:
         if r.status_code != 201:
             raise ValueError("Error processing data:" + r.content.decode("utf-8"))
 
+    def run_multiple(self, num: int):
+        for i in range(num):
+            self.run_one()
+
     def run_set(self):
         self.__logger.log(logging.INFO, "Started running set")
 
@@ -69,8 +77,7 @@ class DummySchemaPerformanceRunner:
 
             start_time = timer()
 
-            for i in range(batch_size):
-                self.run_one()
+            self.run_multiple(batch_size)
 
             end_time = timer()
 
@@ -84,6 +91,52 @@ class DummySchemaPerformanceRunner:
 
         self.__logger.log(logging.INFO, "Finished running set")
 
+    def run_set_parallel(self):
+        self.__logger.log(logging.INFO, "Started running parallel")
+
+        stats = {}
+        parallel_sizes = [self.PARALLEL_SIZE for _ in range(self.PARALLEL_NUMBER)]
+
+        for workers in range(1, 10):
+            self.__logger.log(logging.INFO, "Number of workers = " + str(workers))
+
+            start_time = timer()
+
+            with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
+                executor.map(self.run_multiple, parallel_sizes)
+
+            end_time = timer()
+            self.__logger.log(logging.INFO, "Execution time: " + str(end_time - start_time))
+
+            stats.update({workers: end_time - start_time})
+
+        stats_file = csv.writer(open(self.__parallel_stats_file_name, "w"), delimiter=",", quoting=csv.QUOTE_NONNUMERIC)
+        stats_file.writerow(["WORKERS", "TIME_IN_SECONDS"])
+        for key, val in stats.items():
+            stats_file.writerow([key, val])
+
+        self.__logger.log(logging.INFO, "Finished running parallel")
+
+    def run_1m_parallel(self):
+        self.__logger.log(logging.INFO, "Started running parallel 1m")
+
+        parallel_sizes = [1000 for _ in range(1000)]
+
+        start_time = timer()
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1000) as executor:
+            executor.map(self.run_multiple, parallel_sizes)
+
+        end_time = timer()
+        self.__logger.log(logging.INFO, "Execution time: " + str(end_time - start_time))
+
+        self.__logger.log(logging.INFO, "Finished running parallel 1m")
+
 
 if __name__ == "__main__":
-    DummySchemaPerformanceRunner().run_set()
+    """
+    # DummySchemaPerformanceRunner().run_set()
+    # DummySchemaPerformanceRunner().run_set_parallel()
+    """
+    DummySchemaPerformanceRunner().run_1m_parallel()
+    pass
