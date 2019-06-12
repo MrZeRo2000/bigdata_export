@@ -1,0 +1,1 @@
+"venv/Scripts/python" "src/run_dummy_schema_performance.py"
