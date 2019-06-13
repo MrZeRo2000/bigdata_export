@@ -2,3 +2,6 @@ pytest
 requests
 pandas
 matplotlib
+aiohttp
+cchardet
+aiodns
