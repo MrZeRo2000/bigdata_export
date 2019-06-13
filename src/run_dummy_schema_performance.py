@@ -9,6 +9,8 @@ import logging
 import csv
 import datetime
 import concurrent.futures
+import asyncio
+from aiohttp import ClientSession
 
 
 class DummySchemaPerformanceRunner:
@@ -132,11 +134,59 @@ class DummySchemaPerformanceRunner:
 
         self.__logger.log(logging.INFO, "Finished running parallel 1m")
 
+    async def async_run_one(self, url, session):
+        schema_data = self.__schema_data_generator.generate()
+
+        async with session.post(url, headers=self.HEADERS, data=schema_data) as response:
+            return await response.json(), response.status
+
+    async def async_bound_run_one(self, sem, url, session):
+        # Getter function with semaphore.
+        async with sem:
+            return await self.async_run_one(url, session)
+
+    async def async_run(self, num):
+        tasks = []
+        # create instance of Semaphore
+        sem = asyncio.Semaphore(1000)
+
+        # Create client session that will ensure we dont open new connection
+        # per each request.
+        async with ClientSession() as session:
+            for i in range(num):
+                # pass Semaphore and session to every GET request
+                task = asyncio.ensure_future(self.async_bound_run_one(sem, self.URL, session))
+                tasks.append(task)
+
+            responses = asyncio.gather(*tasks)
+            return await responses
+
+    def async_run_all(self, num):
+        self.__logger.log(logging.INFO, "Started running async {}".format(num))
+        start_time = timer()
+
+        loop = asyncio.get_event_loop()
+
+        future = asyncio.ensure_future(self.async_run(num))
+        loop.run_until_complete(future)
+
+        end_time = timer()
+        self.__logger.log(logging.INFO, "Finished running async {}, elapsed time {} seconds".format(num, end_time - start_time))
+
+        fr = future.result()
+        fr_errors = [x for x in fr if x[1] != 201]
+
+        self.__logger.log(logging.INFO, "Total: {}, errors:{}".format(len(fr), len(fr_errors)))
+
+        if len(fr_errors) != 0:
+            self.__logger.log(logging.CRITICAL, str(fr_errors))
+
 
 if __name__ == "__main__":
-    """
+    pass
     # DummySchemaPerformanceRunner().run_set()
-    # DummySchemaPerformanceRunner().run_set_parallel()    
-    DummySchemaPerformanceRunner().run_1m_parallel()
-    """
-    DummySchemaPerformanceRunner().run_set_parallel(10, 200, 20)
+    # DummySchemaPerformanceRunner().run_set_parallel()
+    # DummySchemaPerformanceRunner().run_1m_parallel()
+    # DummySchemaPerformanceRunner().run_set_parallel(10, 200, 20)
+    # DummySchemaPerformanceRunner().async_run_all(1000000)
+
