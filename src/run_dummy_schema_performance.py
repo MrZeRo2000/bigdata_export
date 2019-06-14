@@ -134,18 +134,21 @@ class DummySchemaPerformanceRunner:
 
         self.__logger.log(logging.INFO, "Finished running parallel 1m")
 
-    async def async_run_one(self, url, session):
-        schema_data = self.__schema_data_generator.generate()
+    async def async_run_one(self, url, session, size):
+        if size == 1:
+            schema_data = self.__schema_data_generator.generate()
+        else:
+            schema_data = self.__schema_data_generator.generate_array(size)
 
         async with session.post(url, headers=self.HEADERS, data=schema_data) as response:
             return await response.json(), response.status
 
-    async def async_bound_run_one(self, sem, url, session):
+    async def async_bound_run_one(self, sem, url, session, size):
         # Getter function with semaphore.
         async with sem:
-            return await self.async_run_one(url, session)
+            return await self.async_run_one(url, session, size)
 
-    async def async_run(self, num):
+    async def async_run(self, num, size):
         tasks = []
         # create instance of Semaphore
         sem = asyncio.Semaphore(1000)
@@ -155,23 +158,26 @@ class DummySchemaPerformanceRunner:
         async with ClientSession() as session:
             for i in range(num):
                 # pass Semaphore and session to every GET request
-                task = asyncio.ensure_future(self.async_bound_run_one(sem, self.URL, session))
+                task = asyncio.ensure_future(self.async_bound_run_one(sem, self.URL, session, size))
                 tasks.append(task)
 
             responses = asyncio.gather(*tasks)
             return await responses
 
-    def async_run_all(self, num):
-        self.__logger.log(logging.INFO, "Started running async {}".format(num))
+    def async_run_all(self, num, size):
+        self.__logger.log(logging.INFO, "Started running async {} items of {} elements".
+                          format(num, size))
+
         start_time = timer()
 
         loop = asyncio.get_event_loop()
 
-        future = asyncio.ensure_future(self.async_run(num))
+        future = asyncio.ensure_future(self.async_run(num, size))
         loop.run_until_complete(future)
 
         end_time = timer()
-        self.__logger.log(logging.INFO, "Finished running async {}, elapsed time {} seconds".format(num, end_time - start_time))
+        self.__logger.log(logging.INFO, "Finished running async {} items of {} elements, elapsed time {} seconds".
+                          format(num, size, end_time - start_time))
 
         fr = future.result()
         fr_errors = [x for x in fr if x[1] != 201]
@@ -189,4 +195,5 @@ if __name__ == "__main__":
     # DummySchemaPerformanceRunner().run_1m_parallel()
     # DummySchemaPerformanceRunner().run_set_parallel(10, 200, 20)
     # DummySchemaPerformanceRunner().async_run_all(1000000)
+    DummySchemaPerformanceRunner().async_run_all(10000, 100)
 

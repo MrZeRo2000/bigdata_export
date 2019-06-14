@@ -21,3 +21,8 @@ class TestSchemaDataGenerator(TestCase):
         data_generator = SchemaDataGenerator(self.schema_data, self.data_generator)
         data = data_generator.generate()
         self.assertIsNotNone(data, "Empty data")
+
+    def test_schema_data_generator_array(self):
+        data_generator = SchemaDataGenerator(self.schema_data, self.data_generator)
+        data = data_generator.generate_array(2)
+        self.assertIsNotNone(data, "Empty data")

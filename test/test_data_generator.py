@@ -37,3 +37,4 @@ class TestDataGenerator(TestCase):
 
         test_bigint = data_generator.get_by_type("bigint")
         print("test_bigint:" + str(test_bigint))
+
