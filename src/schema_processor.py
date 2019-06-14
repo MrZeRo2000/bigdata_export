@@ -36,23 +36,21 @@ class SchemaDataGenerator:
         self.__schema_data = schema_data
         self.__data_generator = data_generator
 
-    def generate(self) -> str:
+    def generate_data(self):
         data = {}
 
-        for row in self.__schema_data:
-            data.update({row["name"]: self.__data_generator.get_by_type(row["type"])})
+        _ = [data.update({row["name"]: self.__data_generator.get_by_type(row["type"])}) for row in self.__schema_data]
+
+        return data
+
+    def generate(self) -> str:
+        data = self.generate_data()
 
         return json.dumps(data)
 
     def generate_array(self, num) -> str:
         result = []
 
-        for i in range(num):
-            data = {}
-
-            for row in self.__schema_data:
-                data.update({row["name"]: self.__data_generator.get_by_type(row["type"])})
-
-            result.append(data)
+        _ = [result.append(self.generate_data()) for _ in range(num)]
 
         return json.dumps(result)

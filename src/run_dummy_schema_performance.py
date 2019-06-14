@@ -168,24 +168,28 @@ class DummySchemaPerformanceRunner:
         self.__logger.log(logging.INFO, "Started running async {} items of {} elements".
                           format(num, size))
 
-        start_time = timer()
+        try:
+            start_time = timer()
 
-        loop = asyncio.get_event_loop()
+            loop = asyncio.get_event_loop()
 
-        future = asyncio.ensure_future(self.async_run(num, size))
-        loop.run_until_complete(future)
+            future = asyncio.ensure_future(self.async_run(num, size))
+            loop.run_until_complete(future)
 
-        end_time = timer()
-        self.__logger.log(logging.INFO, "Finished running async {} items of {} elements, elapsed time {} seconds".
-                          format(num, size, end_time - start_time))
+            end_time = timer()
+            self.__logger.log(logging.INFO, "Finished running async {} items of {} elements, elapsed time {} seconds".
+                              format(num, size, end_time - start_time))
 
-        fr = future.result()
-        fr_errors = [x for x in fr if x[1] != 201]
+            fr = future.result()
+            fr_errors = [x for x in fr if x[1] != 201]
 
-        self.__logger.log(logging.INFO, "Total: {}, errors:{}".format(len(fr), len(fr_errors)))
+            self.__logger.log(logging.INFO, "Total: {}, errors:{}".format(len(fr), len(fr_errors)))
 
-        if len(fr_errors) != 0:
-            self.__logger.log(logging.CRITICAL, str(fr_errors))
+            if len(fr_errors) != 0:
+                self.__logger.log(logging.CRITICAL, str(fr_errors))
+        except Exception as e:
+            self.__logger.fatal(e, exc_info=True)
+            exit(1)
 
 
 if __name__ == "__main__":
