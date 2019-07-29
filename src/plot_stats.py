@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 
 script_dir = os.path.dirname(__file__)
 
+
 def plot_parallel(size, num):
     parallel_stats_file_name = os.path.join(script_dir, "../data", "stats_{}_{}.txt".format(size, num))
     parallel_result_pic_file_name = os.path.join(script_dir, "../data", "stats_{}_{}.png".format(size, num))
@@ -54,8 +55,9 @@ def plot_single():
     plt.show()
 
 
-plot_single()
-plot_parallel(100, 10)
-plot_parallel(20, 100)
-plot_parallel(10, 200)
-plot_async()
+if __name__ == "__main__":
+    plot_single()
+    plot_parallel(100, 10)
+    plot_parallel(20, 100)
+    plot_parallel(10, 200)
+    plot_async()
