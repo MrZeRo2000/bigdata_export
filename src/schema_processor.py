@@ -1,5 +1,6 @@
 
 import json
+import re
 from data_generatior import DataGenerator
 
 
@@ -14,12 +15,15 @@ class SchemaParser:
         # fix equals
         data = data.replace(" = ", ":")
 
+        # remove redundant characters
+        data = re.search(r'schema_columns:\[(.*?)\]', data, re.DOTALL).group(0)
+
         # add quotes
         data = data.\
-            replace("name", "\"name\"").\
-            replace("type", "\"type\"").\
-            replace("comment", "\"comment\"").\
-            replace("schema_columns", "\"schema_columns\"")
+            replace("name:", "\"name\":").\
+            replace("type:", "\"type\":").\
+            replace("comment:", "\"comment\":").\
+            replace("schema_columns:", "\"schema_columns\":")
 
         # add brackets
         data = "{" + data + "}"
