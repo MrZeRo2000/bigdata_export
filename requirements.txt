@@ -5,3 +5,4 @@ matplotlib
 aiohttp
 cchardet
 aiodns
+cx_Oracle
