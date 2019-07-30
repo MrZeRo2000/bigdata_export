@@ -1,0 +1,7 @@
+{
+  "defaults": {"load_method": "sequential"},
+  "tables":
+    [
+      {"name": "dn_dict_prd_catalog_map"}    
+    ]
+}

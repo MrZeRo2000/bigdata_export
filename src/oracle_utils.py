@@ -3,7 +3,7 @@ import cx_Oracle
 import pandas as pd
 
 
-class OracleReader:
+class OracleReader(object):
     def __init__(self, connection_string: str, sql_text: str):
         self.__connection_string = connection_string
         self.__sql_text = sql_text
@@ -23,6 +23,8 @@ class OracleReader:
         self.__cursor = self.__connection.cursor()
         self.__cursor.execute(self.__sql_text)
         self.__column_names = [col[0] for col in self.__cursor.description]
+
+        return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         if self.__cursor is not None:

@@ -1,12 +1,15 @@
 
 import json
 import re
+import pandas as pd
+from functools import reduce
 from data_generatior import DataGenerator
 
 
 class SchemaParser:
     def __init__(self, file_name):
         self.__data_file_name = file_name
+        self.__data = None
 
     def parse(self):
         with open(self.__data_file_name, 'r') as file:
@@ -31,8 +34,26 @@ class SchemaParser:
         # ensure it is decoded
         json_data = json.loads(data)
 
+        self.__data = json_data["schema_columns"]
+
         # return data
-        return json_data["schema_columns"]
+        return self.__data
+
+    def ensure_data(self):
+        if self.__data is None:
+            self.parse()
+
+    def get_columns_list(self):
+        self.ensure_data()
+        return [d["name"] for d in self.__data]
+
+    def get_columns_string(self):
+        columns_list = self.get_columns_list()
+        return reduce((lambda s1, s2: s1 + ',' + s2), columns_list)
+
+    def get_column_types(self):
+        self.ensure_data()
+        return dict(map(lambda x: (x["name"], x["type"]), list(self.__data)))
 
 
 class SchemaDataGenerator:
@@ -58,3 +79,13 @@ class SchemaDataGenerator:
         _ = [result.append(self.generate_data()) for _ in range(num)]
 
         return json.dumps(result)
+
+
+class SchemaDataFormatter:
+    def __init__(self, column_types):
+        self.__column_types = column_types
+
+    def get_json_data(self, df):
+        data = {}
+
+        return data

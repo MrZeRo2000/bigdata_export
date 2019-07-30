@@ -9,6 +9,12 @@ class Configuration:
     CONFIG_PATH = "cfg"
     """Log path"""
 
+    SCHEMA_PATH = "schema"
+    """Schema path"""
+
+    SCHEMA_FILE_NAME_TEMPLATE = "schema_{}.tf"
+    """Schema File name templace"""
+
     CSV_DELIMITER = ';'
     """CSV file fields delimiter"""
 
@@ -33,6 +39,14 @@ class Configuration:
             os.path.join(
                 os.path.dirname(__file__),
                 "../" + self.CONFIG_PATH + "/" + file_name
+            )
+        )
+
+    def get_schema_file_name(self, table_name: str) -> str:
+        return os.path.abspath(
+            os.path.join(
+                os.path.dirname(__file__),
+                "../" + self.SCHEMA_PATH + "/" + self.SCHEMA_FILE_NAME_TEMPLATE.format(table_name)
             )
         )
 
