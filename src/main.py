@@ -4,6 +4,7 @@ from context import inject
 import sys
 from logging import Logger
 from log import log_method
+from table_processor import TableExportService
 
 
 class Main:
@@ -21,6 +22,11 @@ class Main:
     @property
     @inject
     def logger(self) -> Logger: pass
+
+    # noinspection PyPropertyDefinition
+    @property
+    @inject
+    def table_export_service(self) -> TableExportService: pass
 
     def configure(self):
         if len(self.__args) < 2:
@@ -42,6 +48,12 @@ class Main:
                 self.logger.info("Loading table:{0}".format(str(table_info)))
                 load_method = self.configuration.get_load_method(table_info)
                 self.logger.info("Load method for {0}:{1}".format(table_info.get("name"), load_method))
+
+                try:
+                    self.table_export_service.prepare(table_info)
+                    self.table_export_service.execute()
+                except Exception as e:
+                    self.logger.error(e, exc_info=True)
 
             return self
         except Exception as e:

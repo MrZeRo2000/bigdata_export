@@ -14,33 +14,29 @@ class QueryRepository:
     ROWID_COLUMN_NAME = "ROWID_CHAR"
     QUERY_TEMPLATE = "SELECT ROWIDTOCHAR(ROWID) AS " + ROWID_COLUMN_NAME + ",{0} FROM {1} WHERE {2}"
     DEFAULT_PREDICATE = "1 = 1"
+    ROWID_PREDICATE = "ROWID IN({})"
     TIMESTAMP_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
 
 
 @component
 class QueryBuilder:
 
-    # noinspection PyPropertyDefinition
-    @property
-    @inject
-    def configuration(self) -> Configuration: pass
-
-    # noinspection PyPropertyDefinition
-    @property
-    @inject
-    def logger(self) -> Logger: pass
-
-    def get_query(self, table_name, predicate):
-        schema_file_name = self.configuration.get_schema_file_name(table_name)
-        schema_parser = SchemaParser(schema_file_name)
-        column_names_string = schema_parser.get_columns_string()
-
+    @staticmethod
+    def get_query(table_name, column_names_string, predicate):
         if predicate is None or predicate == "":
             predicate_string = QueryRepository.DEFAULT_PREDICATE
         else:
             predicate_string = predicate
 
         return QueryRepository.QUERY_TEMPLATE.format(column_names_string, table_name, predicate_string)
+
+    @staticmethod
+    def get_rowids_predicate(rowids):
+        return QueryRepository.ROWID_PREDICATE.format(
+            "'{}'".format(
+                reduce(lambda s1, s2: "{}','{}".format(s1, s2), rowids)
+            )
+        )
 
 
 @component
@@ -67,7 +63,7 @@ class DataFrameFormatter:
             result)
         )
 
-        return df[QueryRepository.ROWID_COLUMN_NAME], json.dumps(result)
+        return df[QueryRepository.ROWID_COLUMN_NAME].tolist(), json.dumps(result)
 
     @staticmethod
     def format_list_as_strings(data):

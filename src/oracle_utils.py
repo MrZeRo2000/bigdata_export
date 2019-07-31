@@ -18,6 +18,14 @@ class OracleReader(object):
 
         return df
 
+    def get(self, limit):
+        rows = self.__cursor.fetchmany(limit)
+
+        df = pd.DataFrame(rows)
+        df.columns = self.__column_names
+
+        yield df
+
     def __enter__(self):
         self.__connection = cx_Oracle.connect(self.__connection_string)
         self.__cursor = self.__connection.cursor()

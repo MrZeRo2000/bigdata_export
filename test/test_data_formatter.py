@@ -15,14 +15,15 @@ class TestOracleDataFormatter(ContextTestCase):
         self.configuration.load("../test/cfg/test.json", "../test/cfg/tables_dn_dict_prd_catalog_map.json")
 
     def test_dn_dict_prd_catalog_map(self):
-        query_text = QueryBuilder().get_query("dn_dict_prd_catalog_map", "")
-
         schema_file_name = self.configuration.get_schema_file_name("dn_dict_prd_catalog_map")
         schema_parser = SchemaParser(schema_file_name)
         column_types = schema_parser.get_column_types()
+        columns_string = schema_parser.get_columns_string()
+
+        query_text = QueryBuilder().get_query("dn_dict_prd_catalog_map", columns_string, "")
 
         with OracleReader(self.configuration.get()["database"]["connection"], query_text) as r:
-            df = r.read(10)
+            df = r.read(1000)
             pass
 
         result = []

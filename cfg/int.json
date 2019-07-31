@@ -3,10 +3,11 @@
     "level": 10
   },
   "database": {
-    "connection": "drivenow_bi/drivenow_bi@sxbistax"
+    "connection": "drivenow_bi/drivenow_bi@sxbistax",
+    "chunk_size": 100000
   },
   "big_data": {
-    "url": "https://gsq0mgv1i6.execute-api.eu-central-1.amazonaws.com/int/{table_name}",
+    "url": "https://gsq0mgv1i6.execute-api.eu-central-1.amazonaws.com/int/{}",
     "api_key": "HdnVmPVaPn8vq8pY3Zcs123oztXfBnPy9TGRIR63"
   }
 }

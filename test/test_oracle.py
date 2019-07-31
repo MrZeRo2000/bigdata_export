@@ -1,5 +1,5 @@
 
-from unittest import TestCase
+from unittest import TestCase, skip
 from oracle_utils import OracleReader
 
 
@@ -12,7 +12,13 @@ class TestOracleReader(TestCase):
             df = r.read(10)
             self.assertIs(1, len(df))
 
+    @skip
     def test_read_1m(self):
         with OracleReader(self.connection_string, "SELECT * FROM dn_fact_prd_usage_details") as r:
             df = r.read(100000)
             self.assertEqual(100000, len(df))
+
+    def test_get(self):
+        with OracleReader(self.connection_string, "SELECT * FROM dual") as r:
+            for d in r.get(1000):
+                pass

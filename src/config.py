@@ -30,6 +30,9 @@ class Configuration:
     CONFIG_PARAM_PREDICATE = "predicate"
     """Predicate config"""
 
+    CONFIG_PARAM_BIGDATA = "big_data"
+    """BigData config"""
+
     def __init__(self):
         self.__data = {}
         self.__tables = {}
@@ -72,3 +75,6 @@ class Configuration:
 
     def get_predicate(self, table_info) -> str:
         return self.get_table_param_value(table_info, self.CONFIG_PARAM_PREDICATE)
+
+    def get_big_data_params(self):
+        return self.__data.get(self.CONFIG_PARAM_BIGDATA)

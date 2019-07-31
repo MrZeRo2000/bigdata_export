@@ -12,7 +12,7 @@ class TestQueryBuilder(ContextTestCase):
         self.configuration.load("../test/cfg/test.json", "../test/cfg/tables_dim_promocode_category.json")
 
     def test_query_builder(self):
-        query_text = QueryBuilder().get_query("dm_dim_promocode_category", "")
-        self.assertEqual("SELECT ROWIDTOCHAR(ROWID) AS rowid_char,category,category_name,insert_date FROM dm_dim_promocode_category WHERE 1 = 1", query_text)
+        query_text = QueryBuilder().get_query("dm_dim_promocode_category","category,category_name,insert_date", "")
+        self.assertEqual("SELECT ROWIDTOCHAR(ROWID) AS ROWID_CHAR,category,category_name,insert_date FROM dm_dim_promocode_category WHERE 1 = 1", query_text)
 
 

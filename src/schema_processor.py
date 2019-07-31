@@ -1,7 +1,6 @@
 
 import json
 import re
-import pandas as pd
 from functools import reduce
 from data_generatior import DataGenerator
 
@@ -79,13 +78,3 @@ class SchemaDataGenerator:
         _ = [result.append(self.generate_data()) for _ in range(num)]
 
         return json.dumps(result)
-
-
-class SchemaDataFormatter:
-    def __init__(self, column_types):
-        self.__column_types = column_types
-
-    def get_json_data(self, df):
-        data = {}
-
-        return data
