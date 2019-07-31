@@ -52,5 +52,9 @@ class TestOracleDataFormatter(ContextTestCase):
         result_json = json.dumps(result)
         print(result_json)
 
-        print(DataFrameFormatter().format_as_json(df, column_types))
+        dff = DataFrameFormatter()
 
+        rowid_list, json_data = dff.format_as_json(df, column_types)
+        print("rowid_list:" + str(rowid_list))
+        print("json_data:" + json_data)
+        print("formatted rowid_list:" + dff.format_list_as_strings(rowid_list))

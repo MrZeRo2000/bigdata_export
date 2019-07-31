@@ -1,20 +1,24 @@
 
-from app import AppContext
 from config import Configuration
 from context import inject, component
-import sys
 import math
 import json
 import pandas as pd
 from logging import Logger
 from log import log_method
+from functools import reduce
 from schema_processor import SchemaParser
+
+
+class QueryRepository:
+    ROWID_COLUMN_NAME = "ROWID_CHAR"
+    QUERY_TEMPLATE = "SELECT ROWIDTOCHAR(ROWID) AS " + ROWID_COLUMN_NAME + ",{0} FROM {1} WHERE {2}"
+    DEFAULT_PREDICATE = "1 = 1"
+    TIMESTAMP_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
 
 
 @component
 class QueryBuilder:
-    QUERY_TEMPLATE = "SELECT ROWIDTOCHAR(ROWID) AS rowid_char,{0} FROM {1} WHERE {2}"
-    DEFAULT_PREDICATE = "1 = 1"
 
     # noinspection PyPropertyDefinition
     @property
@@ -32,16 +36,15 @@ class QueryBuilder:
         column_names_string = schema_parser.get_columns_string()
 
         if predicate is None or predicate == "":
-            predicate_string = self.DEFAULT_PREDICATE
+            predicate_string = QueryRepository.DEFAULT_PREDICATE
         else:
             predicate_string = predicate
 
-        return self.QUERY_TEMPLATE.format(column_names_string, table_name, predicate_string)
+        return QueryRepository.QUERY_TEMPLATE.format(column_names_string, table_name, predicate_string)
 
 
 @component
 class DataFrameFormatter:
-    TIMESTAMP_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
 
     @staticmethod
     def format_as_json(df, column_types):
@@ -50,7 +53,8 @@ class DataFrameFormatter:
             map(
                 lambda x:
                 (x, row[x.upper()])
-                    if type(row[x.upper()]) != pd.Timestamp else (x, row[x.upper()].strftime('%Y-%m-%dT%H:%M:%SZ')),
+                    if type(row[x.upper()]) != pd.Timestamp
+                    else (x, row[x.upper()].strftime(QueryRepository.TIMESTAMP_FORMAT)),
                 column_types)
         ),axis=1))
 
@@ -63,4 +67,10 @@ class DataFrameFormatter:
             result)
         )
 
-        return json.dumps(result)
+        return df[QueryRepository.ROWID_COLUMN_NAME], json.dumps(result)
+
+    @staticmethod
+    def format_list_as_strings(data):
+        return "'{}'".format(
+            reduce(lambda s1, s2: "{}','{}".format(s1, s2), data)
+        )
