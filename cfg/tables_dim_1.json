@@ -1,8 +1,7 @@
 {
-  "defaults": {"load_method": "sequential"},
   "tables":
     [
-      {"name": "dm_dim_promocode_category", "load_method": "async"},
+      {"name": "dm_dim_promocode_category"},
       {"name": "dm_dim_promocode_subcategory", "predicate": ""}
     ]
 }

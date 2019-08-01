@@ -19,12 +19,15 @@ class OracleReader(object):
         return df
 
     def get(self, limit):
-        rows = self.__cursor.fetchmany(limit)
+        while True:
+            rows = self.__cursor.fetchmany(limit)
+            if len(rows) == 0:
+                break
 
-        df = pd.DataFrame(rows)
-        df.columns = self.__column_names
+            df = pd.DataFrame(rows)
+            df.columns = self.__column_names
 
-        yield df
+            yield df
 
     def __enter__(self):
         self.__connection = cx_Oracle.connect(self.__connection_string)

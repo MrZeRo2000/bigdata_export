@@ -76,7 +76,7 @@ module "int_dn_dim_customer_v2" {
         { name = "bonus_minutes", type = "double", comment = "Amount of bonus minutes gived with a used registration promo code; Source: DRIVENOW_BI.DN_DIM_PROMOTION.NUM_EVENTS" },
         { name = "num_events", type = "double", comment = "Number of rest promo events; Source: DRIVENOW_BI.DN_DIM_PROMOTION.NUM_EVENTS" },
         { name = "accounting_to", type = "string", comment = "Department to which promo code accounts; Source: DRIVENOW_BI.DN_DIM_PROMOTION" },
-        { name = "customer_full_name", type = "string", comment = "Customer full name; Source: METRO.JVPERS" },
+        { name = "customer_fuul_name", type = "string", comment = "Customer full name; Source: METRO.JVPERS" },
         { name = "promo_owner_name", type = "string", comment = "Owner/creater of a promo code; DRIVENOW_BI.DN_DIM_PROMOTION" },
         { name = "promo_valid_from", type = "string", comment = "Promo code validity start date; DRIVENOW_BI.DN_DIM_PROMOTION" },
         { name = "promo_valid_to", type = "string", comment = "Promo code validity end date; DRIVENOW_BI.DN_DIM_PROMOTION" },

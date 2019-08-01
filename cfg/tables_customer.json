@@ -1,5 +1,4 @@
 {
-  "defaults": {"load_method": "async"},
   "tables":
     [
       {"name": "dn_dim_customer_v2"}

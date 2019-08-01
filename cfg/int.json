@@ -9,5 +9,8 @@
   "big_data": {
     "url": "https://gsq0mgv1i6.execute-api.eu-central-1.amazonaws.com/int/{}",
     "api_key": "HdnVmPVaPn8vq8pY3Zcs123oztXfBnPy9TGRIR63"
+  },
+  "processing": {
+    "read_export_tasks_parallel": true
   }
 }

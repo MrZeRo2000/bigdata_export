@@ -24,9 +24,6 @@ class Configuration:
     CONFIG_PARAM_DEFAULTS = "defaults"
     """Defaults config"""
 
-    CONFIG_PARAM_LOAD_METHOD = "load_method"
-    """Load method config"""
-
     CONFIG_PARAM_PREDICATE = "predicate"
     """Predicate config"""
 
@@ -69,9 +66,6 @@ class Configuration:
             result = self.__tables.get(self.CONFIG_PARAM_DEFAULTS).get(param_value)
 
         return result
-
-    def get_load_method(self, table_info) -> str:
-        return self.get_table_param_value(table_info, self.CONFIG_PARAM_LOAD_METHOD)
 
     def get_predicate(self, table_info) -> str:
         return self.get_table_param_value(table_info, self.CONFIG_PARAM_PREDICATE)

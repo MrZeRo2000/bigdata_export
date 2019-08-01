@@ -46,8 +46,6 @@ class Main:
         try:
             for table_info in self.configuration.get_tables():
                 self.logger.info("Started table:{}".format(str(table_info)), {"table_stats": table_info})
-                load_method = self.configuration.get_load_method(table_info)
-                self.logger.info("Load method for {0}:{1}".format(table_info.get("name"), load_method))
 
                 try:
                     self.table_export_service.prepare(table_info)

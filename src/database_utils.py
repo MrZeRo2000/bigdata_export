@@ -4,6 +4,7 @@ from context import inject, component
 import math
 import json
 import pandas as pd
+import datetime
 from logging import Logger
 from log import log_method
 from functools import reduce
@@ -49,7 +50,7 @@ class DataFrameFormatter:
             map(
                 lambda x:
                 (x, row[x.upper()])
-                    if type(row[x.upper()]) != pd.Timestamp
+                    if type(row[x.upper()]) not in [pd.Timestamp, datetime.datetime]
                     else (x, row[x.upper()].strftime(QueryRepository.TIMESTAMP_FORMAT)),
                 column_types)
         ),axis=1))
