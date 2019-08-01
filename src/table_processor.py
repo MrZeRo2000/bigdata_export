@@ -82,6 +82,7 @@ class TableExportService:
             raise Exception("Rowids left unprocessed in the last chunk: {0:d}".format(len(error_rowids)))
 
         self.logger.info("Finished {0}, rows: {1:d}".format(self.__table_name, total_row_count))
+        return total_row_count
 
     def export_query(self, query_text):
         with OracleReader(self.__database_connection_string, query_text) as r:

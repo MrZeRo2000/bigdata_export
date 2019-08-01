@@ -45,14 +45,17 @@ class Main:
     def execute(self):
         try:
             for table_info in self.configuration.get_tables():
-                self.logger.info("Loading table:{0}".format(str(table_info)))
+                self.logger.info("Started table:{}".format(str(table_info)), {"table_stats": table_info})
                 load_method = self.configuration.get_load_method(table_info)
                 self.logger.info("Load method for {0}:{1}".format(table_info.get("name"), load_method))
 
                 try:
                     self.table_export_service.prepare(table_info)
-                    self.table_export_service.execute()
+                    result = self.table_export_service.execute()
+                    self.logger.info("Successfully completed table:{0:s}, rows:{1:d}".format(str(table_info), result), {"table_stats": table_info})
                 except Exception as e:
+                    self.logger.info("Failed table:{}".format(str(table_info)),
+                                     {"table_stats": table_info})
                     self.logger.error(e, exc_info=True)
 
             return self

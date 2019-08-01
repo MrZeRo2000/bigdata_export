@@ -18,7 +18,8 @@ class SchemaParser:
         data = data.replace(" = ", ":")
 
         # remove redundant characters
-        data = re.search(r'schema_columns:\[(.*?)\]', data, re.DOTALL).group(0)
+#        data = re.search(r'schema_columns:\[(.*?)\]', data, re.DOTALL).group(0)
+        data = re.search(r'schema_columns:\[(.*?)\]\n', data, re.DOTALL).group(0)
 
         # add quotes
         data = data.\
