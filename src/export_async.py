@@ -12,6 +12,7 @@ class ExportAsyncService:
     def __init__(self, url, headers):
         self.__url = url
         self.__headers = headers
+        self.__log_messages = False
 
     # noinspection PyPropertyDefinition
     @property
@@ -23,10 +24,23 @@ class ExportAsyncService:
     @inject
     def data_frame_formatter(self) -> DataFrameFormatter: pass
 
+    @property
+    def log_messages(self):
+        return self.__log_messages
+
+    @log_messages.setter
+    def log_messages(self, value):
+        self.__log_messages = value
+
     async def run_one(self, session, column_types, df, i):
         # prepare json data
         d = df.loc[i: i + self.JSON_ARRAY_SIZE - 1, :]
         rowid_list, json_data = self.data_frame_formatter.format_as_json(d, column_types)
+
+        if self.__log_messages:
+            self.logger.debug("Logging message")
+            self.logger.debug("headers:{}".format(self.__headers))
+            self.logger.debug("data:{}".format(json_data))
 
         async with session.post(self.__url, headers=self.__headers, data=json_data) as response:
             return await response.json(), response.status, rowid_list

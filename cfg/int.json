@@ -11,6 +11,7 @@
     "api_key": "HdnVmPVaPn8vq8pY3Zcs123oztXfBnPy9TGRIR63"
   },
   "processing": {
-    "read_export_tasks_parallel": true
+    "read_export_tasks_parallel": true,
+    "log_messages1": true
   }
 }

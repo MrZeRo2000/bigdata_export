@@ -53,6 +53,7 @@ class TableExportService:
         self.__processing_params = self.configuration.get()["processing"]
 
         self.__export_service = ExportAsyncService(*self.export_configuration.get_data(self.__table_name))
+        self.__export_service.log_messages = self.__processing_params.get("log_messages")
 
     def execute(self):
         if self.__table_name is None:
