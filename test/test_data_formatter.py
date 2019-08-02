@@ -7,6 +7,16 @@ from database_utils import QueryBuilder, DataFrameFormatter
 from schema_processor import SchemaParser
 import pandas as pd
 import math
+import os
+import datetime
+import functools
+from multiprocessing.pool import ThreadPool
+from itertools import repeat
+from concurrent.futures import ThreadPoolExecutor
+
+
+def format_df(dff, df, column_types):
+    return dff.format_as_json(df, column_types)
 
 
 class TestOracleDataFormatter(ContextTestCase):
@@ -17,6 +27,7 @@ class TestOracleDataFormatter(ContextTestCase):
     def test_dn_dict_prd_catalog_map(self):
         schema_file_name = self.configuration.get_schema_file_name("dn_dict_prd_catalog_map")
         schema_parser = SchemaParser(schema_file_name)
+
         column_types = schema_parser.get_column_types()
         columns_string = schema_parser.get_columns_string()
 
@@ -59,3 +70,37 @@ class TestOracleDataFormatter(ContextTestCase):
         print("rowid_list:" + str(rowid_list))
         print("json_data:" + json_data)
         print("formatted rowid_list:" + dff.format_list_as_strings(rowid_list))
+
+    def test_parallel_processing(self):
+
+        schema_file_name = self.configuration.get_schema_file_name("dn_dim_rate")
+        schema_parser = SchemaParser(schema_file_name)
+
+        column_types = schema_parser.get_column_types()
+        columns_string = schema_parser.get_columns_string()
+
+        query_text = QueryBuilder().get_query("dn_dim_rate", columns_string, "")
+
+        data_file_name = "../data/test_data_100k.txt"
+        if not os.path.isfile(data_file_name):
+            print("file not found, generating")
+            with OracleReader(self.configuration.get()["database"]["connection"], query_text) as r:
+                df = r.read(1000000)
+                df.to_csv(data_file_name, sep=";")
+                print("file generated")
+
+        df = pd.read_csv(data_file_name, sep=";")
+        print("read data from file: {0:d} rows".format(df.shape[0]))
+
+        dff = DataFrameFormatter()
+
+        t1 = datetime.datetime.now()
+        # rowid_list, json_data = dff.format_as_json(df, column_types)
+        # formatted_data = [dff.format_as_json(df.loc[i: i + 20 - 1, :], column_types) for i in range(0, df.shape[0], 20)]
+
+        with ThreadPoolExecutor() as executor:
+            results = [executor.submit(format_df, dff, df.loc[i: i + 20 - 1, :], column_types) for i in range(0, df.shape[0], 20)]
+
+        t2 = datetime.datetime.now()
+        print("Data formatting {0:.4f} seconds".format((t2-t1).total_seconds()))
+

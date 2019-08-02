@@ -6,7 +6,7 @@ from database_utils import QueryBuilder
 from schema_processor import SchemaParser
 from oracle_utils import OracleReader
 from export_utils import ExportConfiguration
-from export_async import ExportAsyncService
+from export_async import ExportAsyncService, ExportAsyncService2
 from concurrent.futures import ThreadPoolExecutor
 
 
@@ -57,11 +57,11 @@ class TableExportService:
 
     def execute(self):
         if self.__table_name is None:
-            raise Exception("Call 'prepare' method before calling 'execute'")
+            raise Exception("call 'prepare' method before calling 'execute'")
 
-        self.logger.info("Started {}".format(self.__table_name))
+        self.logger.info("started {}".format(self.__table_name))
         self.logger.debug(
-            "Reading from database:{}, chunk size:{}".format(
+            "reading from database:{}, chunk size:{}".format(
                 self.__database_connection_string,
                 self.__database_chunk_size
             ))
@@ -76,10 +76,10 @@ class TableExportService:
 
             # choose export method
             if self.__processing_params.get("read_export_tasks_parallel"):
-                self.logger.debug("Read and export tasks are parallel")
+                self.logger.debug("read and export tasks are parallel")
                 export_method = self.export_query_thread
             else:
-                self.logger.debug("Read and export tasks are sequential")
+                self.logger.debug("read and export tasks are sequential")
                 export_method = self.export_query
 
             source_row_count, error_rowids, error_responses = export_method(query_text)
@@ -88,8 +88,8 @@ class TableExportService:
             if len(error_rowids) == 0:
                 break
             else:
-                self.logger.info("Errors found, reprocessing rowids")
-                self.logger.debug("Errors: {}".format(str(error_responses)))
+                self.logger.info("errors found, reprocessing rowids")
+                self.logger.debug("errors: {}".format(str(error_responses)))
                 query_text = self.query_builder.get_query(
                     self.__table_name,
                     self.__column_names_string,
@@ -97,9 +97,9 @@ class TableExportService:
                 )
 
         if len(error_rowids) != 0:
-            raise Exception("Rowids left unprocessed in the last chunk: {0:d}".format(len(error_rowids)))
+            raise Exception("rowids left unprocessed in the last chunk: {0:d}".format(len(error_rowids)))
 
-        self.logger.info("Finished {0}, rows: {1:d}".format(self.__table_name, total_row_count))
+        self.logger.info("finished {0}, rows: {1:d}".format(self.__table_name, total_row_count))
         return total_row_count
 
     def export_query(self, query_text):
@@ -121,7 +121,7 @@ class TableExportService:
 
                 error_row_count = len(error_rowids)
                 if error_row_count >= 1000:
-                    raise Exception("Too many errors during processing of {}:{}, last result:{}, aborting".
+                    raise Exception("too many errors during processing of {}:{}, last result:{}, aborting".
                                     format(self.__table_name, error_row_count, str(export_result[-1:])))
 
                 self.logger.debug("reading next chunk")
@@ -178,7 +178,7 @@ class TableExportService:
 
                         error_row_count = len(error_rowids)
                         if error_row_count >= 1000:
-                            raise Exception("Too many errors during processing of {}:{}, last result:{}, aborting".
+                            raise Exception("too many errors during processing of {}:{}, last result:{}, aborting".
                                             format(self.__table_name, error_row_count, str(export_result[-1:])))
 
         return source_row_count, error_rowids, error_responses
