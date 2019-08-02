@@ -11,7 +11,10 @@
     "api_key": "HdnVmPVaPn8vq8pY3Zcs123oztXfBnPy9TGRIR63"
   },
   "processing": {
-    "read_export_tasks_parallel": true,
+    "export_method1": "read_export_tasks_sequential",
+    "export_method2": "read_export_tasks_parallel",
+    "export_method3": "read_format_export_tasks_parallel",
+    "export_method": "read_export_tasks_parallel",
     "log_messages1": true
   }
 }

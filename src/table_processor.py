@@ -6,12 +6,15 @@ from database_utils import QueryBuilder
 from schema_processor import SchemaParser
 from oracle_utils import OracleReader
 from export_utils import ExportConfiguration
-from export_async import ExportAsyncService, ExportAsyncService2
+from export_async import ExportAsyncService, ExportAsyncService2, ExportAsyncService3
 from concurrent.futures import ThreadPoolExecutor
+from database_utils import DataFrameFormatter
 
 
 @component
 class TableExportService:
+    FORMATTED_DATE_SIZE = 20
+
     # noinspection PyPropertyDefinition
     @property
     @inject
@@ -75,12 +78,18 @@ class TableExportService:
             self.logger.debug("processing cycle:{0:d}".format(cycle_num))
 
             # choose export method
-            if self.__processing_params.get("read_export_tasks_parallel"):
-                self.logger.debug("read and export tasks are parallel")
-                export_method = self.export_query_thread
-            else:
+            export_method = self.__processing_params.get("export_method")
+            if export_method == "read_export_tasks_sequential":
                 self.logger.debug("read and export tasks are sequential")
                 export_method = self.export_query
+            elif export_method == "read_export_tasks_parallel":
+                self.logger.debug("read and export tasks are parallel")
+                export_method = self.export_query_thread
+            elif export_method == "read_format_export_tasks_parallel":
+                self.logger.debug("read, format and export tasks are parallel")
+                export_method = self.export_query_formatted_thread
+            else:
+                raise Exception("Unknown export method:{}".format(export_method))
 
             source_row_count, error_rowids, error_responses = export_method(query_text)
             total_row_count += source_row_count - len(error_rowids)
@@ -103,6 +112,9 @@ class TableExportService:
         return total_row_count
 
     def export_query(self, query_text):
+        """
+        Export query procedure with sequential reading, formatting and exporting data
+        """
         source_row_count = 0
         error_rowids = []
         error_responses = []
@@ -128,13 +140,12 @@ class TableExportService:
 
         return source_row_count, error_rowids, error_responses
 
-    def threaded_read(self, reader: OracleReader):
-        return reader.read(self.__database_chunk_size)
-
-    def threaded_export(self, df):
-        return self.__export_service.run_all(df, self.__column_types)
-
     def export_query_thread(self, query_text):
+        """
+        Export query procedure with ThreadPoolExecutor:
+            load thread
+            exporting data with formatting
+        """
         source_row_count = 0
         error_rowids = []
         error_responses = []
@@ -180,5 +191,96 @@ class TableExportService:
                         if error_row_count >= 1000:
                             raise Exception("too many errors during processing of {}:{}, last result:{}, aborting".
                                             format(self.__table_name, error_row_count, str(export_result[-1:])))
+
+        return source_row_count, error_rowids, error_responses
+
+    def export_query_formatted_thread(self, query_text):
+        """
+        Export query procedure with ThreadPoolExecutor:
+            load thread
+            formatting thread
+            exporting data
+        """
+        source_row_count = 0
+        error_rowids = []
+        error_responses = []
+        df = None
+        dff = None
+        format_future = None
+        export_future = None
+
+        export_service = ExportAsyncService3(*self.export_configuration.get_data(self.__table_name))
+
+        with OracleReader(self.__database_connection_string, query_text) as reader:
+            while True:
+                self.logger.debug("starting parallel working cycle")
+                with ThreadPoolExecutor(max_workers=3) as executor:
+                    self.logger.debug("reading next chunk")
+                    reader_future = \
+                        executor.submit(lambda r: r.read(self.__database_chunk_size), reader)
+
+                    if df is not None:
+                        self.logger.debug("formatting chunk {0:d}".format(df.shape[0]))
+                        format_future = executor.submit(
+                            lambda d, size, types: [DataFrameFormatter.format_as_json(d.loc[i: i + size - 1, :], types)
+                             for i in range(0, d.shape[0], size)], df, self.FORMATTED_DATE_SIZE, self.__column_types
+                        )
+                        """
+                        format_future = [executor.submit(
+                            lambda d, column_types: DataFrameFormatter.format_as_json(d, column_types),
+                            df.loc[i: i + self.FORMATTED_DATE_SIZE - 1, :], self.__column_types)
+                            for i in range(0, df.shape[0], self.FORMATTED_DATE_SIZE)]
+                        """
+                    else:
+                        self.logger.debug("no rows for formatting")
+                        format_future = None
+
+                    if dff is not None:
+                        self.logger.debug("exporting chunk {0:d}".format(len(dff)))
+                        export_future = \
+                            executor.submit(lambda d: export_service.run_all(d), dff)
+                    else:
+                        self.logger.debug("no rows for exporting")
+                        export_future = None
+
+                self.logger.debug("working cycle complete")
+
+                reader_response = reader_future.result()
+                if reader_response is not None:
+                    df = reader_response.copy()
+                    data_size = df.shape[0]
+                    self.logger.debug("read chunk {0:d}".format(data_size))
+                    source_row_count += data_size
+                else:
+                    self.logger.debug("no more rows read")
+                    df = None
+#                    break
+
+                if format_future is not None:
+#                    format_results = [r.result() for r in format_future]
+                    format_results = format_future.result()
+
+                    if format_results is not None:
+                        dff = format_results
+                    else:
+                        dff = None
+                else:
+                    dff = None
+
+                if export_future is not None:
+                    export_result = export_future.result()
+                    if export_result is not None:
+                        error_rowids.extend([item for sublist in [r[2] for r in export_result if r[1] != 201]
+                                             for item in sublist])
+                        error_responses.extend([str(r[1]) + ":" + str(r[0]) for r in export_result if r[1] != 201])
+
+                        error_row_count = len(error_rowids)
+                        if error_row_count >= 1000:
+                            raise Exception("too many errors during processing of {}:{}, last result:{}, aborting".
+                                            format(self.__table_name, error_row_count, str(export_result[-1:])))
+
+                if df is None and dff is None:
+                    self.logger.debug("no more actions")
+                    break
 
         return source_row_count, error_rowids, error_responses

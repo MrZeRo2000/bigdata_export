@@ -13,10 +13,11 @@ import functools
 from multiprocessing.pool import ThreadPool
 from itertools import repeat
 from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ProcessPoolExecutor
 
 
-def format_df(dff, df, column_types):
-    return dff.format_as_json(df, column_types)
+def format_df(df, column_types):
+    return DataFrameFormatter.format_as_json(df, column_types)
 
 
 class TestOracleDataFormatter(ContextTestCase):
@@ -98,8 +99,10 @@ class TestOracleDataFormatter(ContextTestCase):
         # rowid_list, json_data = dff.format_as_json(df, column_types)
         # formatted_data = [dff.format_as_json(df.loc[i: i + 20 - 1, :], column_types) for i in range(0, df.shape[0], 20)]
 
-        with ThreadPoolExecutor() as executor:
-            results = [executor.submit(format_df, dff, df.loc[i: i + 20 - 1, :], column_types) for i in range(0, df.shape[0], 20)]
+        with ProcessPoolExecutor(2) as executor:
+            results_future = [executor.submit(format_df, df.loc[i: i + 20 - 1, :], column_types) for i in range(0, df.shape[0], 20)]
+
+        results = [r.result() for r in results_future]
 
         t2 = datetime.datetime.now()
         print("Data formatting {0:.4f} seconds".format((t2-t1).total_seconds()))

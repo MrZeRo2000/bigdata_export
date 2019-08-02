@@ -40,7 +40,6 @@ class QueryBuilder:
         )
 
 
-@component
 class DataFrameFormatter:
 
     @staticmethod
