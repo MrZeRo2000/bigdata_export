@@ -91,7 +91,7 @@ class TableExportService:
             else:
                 raise Exception("Unknown export method:{}".format(export_method))
 
-            source_row_count, error_rowids, error_responses = export_method(query_text)
+            source_row_count, error_rowids, error_responses = export_method(query_text, cycle_num)
             total_row_count += source_row_count - len(error_rowids)
 
             if len(error_rowids) == 0:
@@ -111,7 +111,18 @@ class TableExportService:
         self.logger.info("finished {0}, rows: {1:d}".format(self.__table_name, total_row_count))
         return total_row_count
 
-    def export_query(self, query_text):
+    def get_chunk_size(self, cycle_num):
+        """
+        Returns read chunk size depending from processing cycle
+        :param cycle_num: Processing cycle number
+        :return: processing chunk size
+        """
+        if cycle_num in range(0, 5):
+            return self.__database_chunk_size
+        else:
+            return 1
+
+    def export_query(self, query_text, cycle_num):
         """
         Export query procedure with sequential reading, formatting and exporting data
         """
@@ -119,8 +130,9 @@ class TableExportService:
         error_rowids = []
         error_responses = []
         with OracleReader(self.__database_connection_string, query_text) as r:
-            self.logger.debug("reading chunk {0:d}".format(self.__database_chunk_size))
-            for df in r.get(self.__database_chunk_size):
+            chunk_size = self.get_chunk_size(cycle_num)
+            self.logger.debug("reading chunk {0:d}".format(chunk_size))
+            for df in r.get(chunk_size):
                 data_size = df.shape[0]
                 self.logger.debug("processing chunk {0:d}".format(data_size))
                 source_row_count += data_size
@@ -140,7 +152,7 @@ class TableExportService:
 
         return source_row_count, error_rowids, error_responses
 
-    def export_query_thread(self, query_text):
+    def export_query_thread(self, query_text, cycle_num):
         """
         Export query procedure with ThreadPoolExecutor:
             load thread
@@ -153,12 +165,13 @@ class TableExportService:
         export_future = None
 
         with OracleReader(self.__database_connection_string, query_text) as reader:
+            chunk_size = self.get_chunk_size(cycle_num)
             while True:
                 self.logger.debug("starting parallel working cycle")
                 with ThreadPoolExecutor(max_workers=2) as executor:
-                    self.logger.debug("reading next chunk")
+                    self.logger.debug("reading next chunk {0:d}".format(chunk_size))
                     reader_future = \
-                        executor.submit(lambda r: r.read(self.__database_chunk_size), reader)
+                        executor.submit(lambda r: r.read(chunk_size), reader)
 
                     if df is not None:
                         self.logger.debug("exporting chunk {0:d}".format(df.shape[0]))
@@ -194,7 +207,7 @@ class TableExportService:
 
         return source_row_count, error_rowids, error_responses
 
-    def export_query_formatted_thread(self, query_text):
+    def export_query_formatted_thread(self, query_text, cycle_num):
         """
         Export query procedure with ThreadPoolExecutor:
             load thread
@@ -212,12 +225,13 @@ class TableExportService:
         export_service = ExportAsyncService3(*self.export_configuration.get_data(self.__table_name))
 
         with OracleReader(self.__database_connection_string, query_text) as reader:
+            chunk_size = self.get_chunk_size(cycle_num)
             while True:
                 self.logger.debug("starting parallel working cycle")
                 with ThreadPoolExecutor(max_workers=3) as executor:
-                    self.logger.debug("reading next chunk")
+                    self.logger.debug("reading next chunk {0:d}".format(chunk_size))
                     reader_future = \
-                        executor.submit(lambda r: r.read(self.__database_chunk_size), reader)
+                        executor.submit(lambda r: r.read(chunk_size), reader)
 
                     if df is not None:
                         self.logger.debug("formatting chunk {0:d}".format(df.shape[0]))

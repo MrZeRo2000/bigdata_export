@@ -36,6 +36,13 @@ class StatsFilter(logging.Filter):
         return type(record.args) == dict and record.args.get("table_stats") is not None
 
 
+class MessagesFilter(logging.Filter):
+    def filter(self, record):
+        return type(record.args) == dict and \
+               record.args.get("headers") is not None and \
+               record.args.get("json_data") is not None
+
+
 @component
 class Logger:
     LOG_FILE_FORMAT = "log_%Y-%m-%d-%H-%M-%S-%f.txt"
@@ -43,6 +50,9 @@ class Logger:
 
     LOG_STATS_FILE_FORMAT = "log_stats_%Y-%m-%d-%H-%M-%S-%f.txt"
     """Log stats file format"""
+
+    LOG_MESSAGES_FILE_FORMAT = "log_messages_%Y-%m-%d-%H-%M-%S-%f.txt"
+    """Log messages file format"""
 
     LOG_PATH = "log"
     """Log path"""
@@ -52,6 +62,9 @@ class Logger:
 
     LOG_STATS_FORMAT = "%(asctime)s %(message)s"
     """Log stats format"""
+
+    LOG_MESSAGES_FORMAT = "%(asctime)s %(message)s"
+    """Log messages format"""
 
     COMPONENT_PROPERTY_NAME = "logger"
 
@@ -72,17 +85,26 @@ class Logger:
         file_handler.setLevel(logging.DEBUG)
         file_handler.setFormatter(formatter)
 
+        # stats
         stats_file_name = os.path.join(log_path, today.strftime(self.LOG_STATS_FILE_FORMAT))
         stats_file_handler = logging.FileHandler(stats_file_name)
         stats_file_handler.setFormatter(Formatter(self.LOG_STATS_FORMAT))
         stats_file_handler.addFilter(StatsFilter())
 
+        # messages
+        messages_file_name = os.path.join(log_path, today.strftime(self.LOG_MESSAGES_FILE_FORMAT))
+        messages_file_handler = logging.FileHandler(messages_file_name)
+        messages_file_handler.setFormatter(Formatter(self.LOG_MESSAGES_FORMAT))
+        messages_file_handler.addFilter(MessagesFilter())
+
+        # console
         console_handler = logging.StreamHandler()
         console_handler.setLevel(logging.DEBUG)
         console_handler.setFormatter(formatter)
 
         self.__logger.addHandler(file_handler)
         self.__logger.addHandler(stats_file_handler)
+        self.__logger.addHandler(messages_file_handler)
         self.__logger.addHandler(console_handler)
 
     @property

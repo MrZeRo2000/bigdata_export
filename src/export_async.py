@@ -36,9 +36,8 @@ class ExportAsyncService:
         rowid_list, json_data = DataFrameFormatter.format_as_json(d, column_types)
 
         if self.__log_messages:
-            self.logger.debug("Logging message")
-            self.logger.debug("headers:{}".format(self.__headers))
-            self.logger.debug("data:{}".format(json_data))
+            self.logger.debug("headers:{}".format(self.__headers) + ";" + "data:{}".format(json_data),
+                              {"headers": self.__headers, "json_data": json_data})
 
         async with session.post(self.__url, headers=self.__headers, data=json_data) as response:
             return await response.json(), response.status, rowid_list
