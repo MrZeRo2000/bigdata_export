@@ -81,7 +81,7 @@ class Logger:
         log_file_name = os.path.join(log_path, today.strftime(self.LOG_FILE_FORMAT))
         formatter = Formatter(self.LOG_FORMAT)
 
-        file_handler = logging.FileHandler(log_file_name)
+        file_handler = logging.FileHandler(log_file_name, encoding='utf-8')
         file_handler.setLevel(logging.DEBUG)
         file_handler.setFormatter(formatter)
 

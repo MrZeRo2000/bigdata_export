@@ -41,7 +41,6 @@ class Main:
 
         return self
 
-    @log_method
     def execute(self):
         try:
             for table_info in self.configuration.get_tables():

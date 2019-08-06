@@ -1,6 +1,6 @@
 
 import json
-from unittest import TestCase
+from unittest import TestCase, skip
 from test_common import ContextTestCase
 from oracle_utils import OracleReader
 from database_utils import QueryBuilder, DataFrameFormatter
@@ -72,6 +72,7 @@ class TestOracleDataFormatter(ContextTestCase):
         print("json_data:" + json_data)
         print("formatted rowid_list:" + dff.format_list_as_strings(rowid_list))
 
+    @skip
     def test_parallel_processing(self):
 
         schema_file_name = self.configuration.get_schema_file_name("dn_dim_rate")

@@ -49,7 +49,7 @@ class SchemaParser:
 
     def get_columns_string(self):
         columns_list = self.get_columns_list()
-        return reduce((lambda s1, s2: s1 + ',' + s2), columns_list)
+        return '"' + reduce((lambda s1, s2: s1.upper() + '","' + s2.upper()), columns_list) + '"'
 
     def get_column_types(self):
         self.ensure_data()

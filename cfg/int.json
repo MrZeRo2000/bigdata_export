@@ -4,6 +4,7 @@
   },
   "database": {
     "connection": "drivenow_bi/drivenow_bi@sxbistax",
+    "chunk_size1": 100000,
     "chunk_size": 100000
   },
   "big_data": {
@@ -15,6 +16,6 @@
     "export_method2": "read_export_tasks_parallel",
     "export_method3": "read_format_export_tasks_parallel",
     "export_method": "read_export_tasks_parallel",
-    "log_messages": true
+    "log_messages1": true
   }
 }

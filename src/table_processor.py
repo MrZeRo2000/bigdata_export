@@ -7,8 +7,10 @@ from schema_processor import SchemaParser
 from oracle_utils import OracleReader
 from export_utils import ExportConfiguration
 from export_async import ExportAsyncService, ExportAsyncService2, ExportAsyncService3
+from concurrent import futures
 from concurrent.futures import ThreadPoolExecutor
 from database_utils import DataFrameFormatter
+import pandas as pd
 
 
 @component
@@ -138,6 +140,9 @@ class TableExportService:
                 source_row_count += data_size
 
                 export_result = self.__export_service.run_all(df, self.__column_types)
+                export_exceptions = [r for r in export_result if type(r) == Exception]
+                if export_exceptions is not None:
+                    raise Exception("Export exceptions: {}".format(str(export_exceptions)))
 
                 error_rowids.extend([item for sublist in [r[2] for r in export_result if r[1] != 201]
                                      for item in sublist])
@@ -168,6 +173,7 @@ class TableExportService:
             chunk_size = self.get_chunk_size(cycle_num)
             while True:
                 self.logger.debug("starting parallel working cycle")
+
                 with ThreadPoolExecutor(max_workers=2) as executor:
                     self.logger.debug("reading next chunk {0:d}".format(chunk_size))
                     reader_future = \
@@ -180,30 +186,43 @@ class TableExportService:
                     else:
                         self.logger.debug("no rows for exporting")
 
-                self.logger.debug("working cycle complete")
-
+                exception_response = []
                 reader_response = reader_future.result()
                 if reader_response is not None:
-                    df = reader_response.copy()
+                    if type(reader_response) == pd.DataFrame:
+                        df = reader_response.copy()
+                        data_size = df.shape[0]
+                        self.logger.debug("read chunk {0:d}".format(data_size))
+                        source_row_count += data_size
+                    else:
+                        reader_exceptions = [r for r in reader_response
+                                             if type(reader_response) == list and isinstance(r, Exception)]
+                        exception_response.extend({"process": "reader", "exceptions:": reader_exceptions})
                 else:
                     self.logger.debug("no more rows read")
-                    break
-
-                data_size = df.shape[0]
-                self.logger.debug("read chunk {0:d}".format(data_size))
-                source_row_count += data_size
 
                 if export_future is not None:
                     export_result = export_future.result()
                     if export_result is not None:
-                        error_rowids.extend([item for sublist in [r[2] for r in export_result if r[1] != 201]
-                                             for item in sublist])
-                        error_responses.extend([str(r[1]) + ":" + str(r[0]) for r in export_result if r[1] != 201])
+                        export_exceptions = [r for r in export_result
+                                             if type(export_result) == list and isinstance(r, Exception)]
+                        if len(export_exceptions) == 0:
+                            error_rowids.extend([item for sublist in [r[2] for r in export_result if r[1] != 201]
+                                                 for item in sublist])
+                            error_responses.extend([str(r[1]) + ":" + str(r[0]) for r in export_result if r[1] != 201])
 
-                        error_row_count = len(error_rowids)
-                        if error_row_count >= 1000:
-                            raise Exception("too many errors during processing of {}:{}, last result:{}, aborting".
-                                            format(self.__table_name, error_row_count, str(export_result[-1:])))
+                            error_row_count = len(error_rowids)
+                            if error_row_count >= 1000:
+                                raise Exception("too many errors during processing of {}:{}, last result:{}, aborting".
+                                                format(self.__table_name, error_row_count, str(export_result[-1:])))
+                        else:
+                            exception_response.extend([{"process": "exporter", "exceptions:": export_exceptions}])
+
+                if len(exception_response) > 0:
+                    raise Exception("Errors in executing working processes: {}".format(str(exception_response)))
+
+                if reader_response is None:
+                    break
 
         return source_row_count, error_rowids, error_responses
 

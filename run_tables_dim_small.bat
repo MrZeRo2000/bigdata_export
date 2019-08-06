@@ -1,0 +1,1 @@
+"venv/Scripts/python" src/main.py int.json tables_dim_small.json

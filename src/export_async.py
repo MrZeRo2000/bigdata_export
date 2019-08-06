@@ -60,7 +60,7 @@ class ExportAsyncService:
                 task = asyncio.ensure_future(self.bound_run_one(sem, session, column_types, df, i))
                 tasks.append(task)
 
-            responses = asyncio.gather(*tasks)
+            responses = asyncio.gather(*tasks, return_exceptions=True)
             return await responses
 
     def run_all(self, df, column_types):
@@ -213,5 +213,8 @@ class ExportAsyncService3:
 
         future = asyncio.ensure_future(self.run(formatted_data))
         loop.run_until_complete(future)
+
+        # added to avoid Task was destroyed but it is pending!
+        loop.close()
 
         return future.result()

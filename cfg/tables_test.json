@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "dn_dim_product_v2", "predicate1": "vehicle_id IN (243, 32038, 244, 245, 246, 247, 248, 249, 250, 251)"}
+    ]
+}

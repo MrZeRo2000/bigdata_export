@@ -4,6 +4,7 @@ from context import inject, component
 import math
 import json
 import pandas as pd
+from pandas import NaT
 import datetime
 from logging import Logger
 from log import log_method
@@ -54,16 +55,24 @@ class DataFrameFormatter:
                 column_types)
         ),axis=1))
 
-        # remove NULL and float NAN
+        # remove NULL and float NAN and NaT
         result = list(map(
             lambda x: {
                 k: v for k, v in x.items()
-                if v is not None and (type(v) != float or (type(v) == float and not math.isnan(v)))
+                if v is not None and not isinstance(v, type(NaT)) and (type(v) != float or (type(v) == float and not math.isnan(v)))
             },
             result)
         )
 
-        return df[QueryRepository.ROWID_COLUMN_NAME].tolist(), json.dumps(result)
+        # to capture data unable to serialize
+        try:
+            json_data = json.dumps(result)
+        except TypeError as e:
+            raise TypeError("Unable to serialize: {}, error message: {}".format(str(result), str(e)))
+        except Exception as e:
+            raise Exception("Exception during serialization: {}, error message: {}".format(str(result), str(e)))
+
+        return df[QueryRepository.ROWID_COLUMN_NAME].tolist(), json_data
 
     @staticmethod
     def format_list_as_strings(data):
