@@ -38,7 +38,7 @@ class TableExportService:
     def export_configuration(self) -> ExportConfiguration: pass
 
     def __init__(self):
-        self.__database_connection_string = self.__database_chunk_size = None
+        self.__database_connection_string = self.__database_chunk_size = self.__json_array_size = None
         self.__table_name = self.__predicate = None
         self.__column_types = self.__column_names_string = None
         self.__export_service = None
@@ -47,8 +47,14 @@ class TableExportService:
     def prepare(self, table_info):
         self.__database_connection_string = self.configuration.get()["database"]["connection"]
         self.__database_chunk_size = self.configuration.get()["database"]["chunk_size"]
+        self.__json_array_size = self.configuration.get()["database"]["json_array_size"]
         self.__table_name = table_info["name"]
         self.__predicate = table_info.get("predicate")
+        table_json_array_size = table_info.get("json_array_size")
+
+        # json array size defined at table level
+        if table_json_array_size is not None:
+            self.__json_array_size = table_json_array_size
 
         schema_file_name = self.configuration.get_schema_file_name(self.__table_name)
         schema_parser = SchemaParser(schema_file_name)
@@ -136,10 +142,10 @@ class TableExportService:
             self.logger.debug("reading chunk {0:d}".format(chunk_size))
             for df in r.get(chunk_size):
                 data_size = df.shape[0]
-                self.logger.debug("processing chunk {0:d}".format(data_size))
+                self.logger.debug("exporting chunk {0:d}, array size {1:d}".format(data_size, self.__json_array_size))
                 source_row_count += data_size
 
-                export_result = self.__export_service.run_all(df, self.__column_types)
+                export_result = self.__export_service.run_all(df, self.__column_types, self.__json_array_size)
                 export_exceptions = [r for r in export_result if type(r) == Exception]
                 if export_exceptions is not None:
                     raise Exception("Export exceptions: {}".format(str(export_exceptions)))
@@ -180,9 +186,11 @@ class TableExportService:
                         executor.submit(lambda r: r.read(chunk_size), reader)
 
                     if df is not None:
-                        self.logger.debug("exporting chunk {0:d}".format(df.shape[0]))
+                        self.logger.debug(
+                            "exporting chunk {0:d}, array size {1:d}".format(df.shape[0], self.__json_array_size))
                         export_future = \
-                            executor.submit(lambda d: self.__export_service.run_all(d, self.__column_types), df)
+                            executor.submit(lambda d: self.__export_service.run_all(
+                                d, self.__column_types, self.__json_array_size), df)
                     else:
                         self.logger.debug("no rows for exporting")
 

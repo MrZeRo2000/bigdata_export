@@ -1,6 +1,6 @@
 {
   "tables":
     [
-      {"name": "dn_dim_product_v2", "predicate1": "vehicle_id IN (243, 32038, 244, 245, 246, 247, 248, 249, 250, 251)"}
+      {"name": "dn_dim_customer_v2", "predicate": "rownum < 1000", "json_array_size": 5}
     ]
 }
