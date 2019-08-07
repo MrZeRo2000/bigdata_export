@@ -30,7 +30,7 @@ class OracleReader(object):
             yield df
 
     def __enter__(self):
-        self.__connection = cx_Oracle.connect(self.__connection_string)
+        self.__connection = cx_Oracle.connect(self.__connection_string, encoding="UTF-8", nencoding="UTF-8")
         self.__cursor = self.__connection.cursor()
         self.__cursor.execute(self.__sql_text)
         self.__column_names = [col[0] for col in self.__cursor.description]
