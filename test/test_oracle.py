@@ -1,6 +1,7 @@
 
 from unittest import TestCase, skip
 from oracle_utils import OracleReader
+import logging
 
 
 class TestOracleReader(TestCase):
@@ -21,4 +22,12 @@ class TestOracleReader(TestCase):
     def test_get(self):
         with OracleReader(self.connection_string, "SELECT * FROM dual") as r:
             for d in r.get(1000):
+                logging.info("test get")
+                pass
+
+    @skip
+    def test_get_customer_v2(self):
+        with OracleReader(self.connection_string, "SELECT * FROM dn_dim_customer_v2") as r:
+            for d in r.get(100000):
+                print("Read {} rows".format(d.shape[0]))
                 pass

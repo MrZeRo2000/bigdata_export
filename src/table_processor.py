@@ -230,6 +230,7 @@ class TableExportService:
                     raise Exception("Errors in executing working processes: {}".format(str(exception_response)))
 
                 if reader_response is None:
+                    self.logger.debug("no more actions for a working cycle, exiting")
                     break
 
         return source_row_count, error_rowids, error_responses
