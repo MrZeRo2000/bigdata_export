@@ -45,7 +45,7 @@ module "int_dn_fact_deleted_corr_invoices" {
         { name = "country_currency", type = "string", comment = "" },
         { name = "rental_currency", type = "string", comment = "" },
         { name = "exchange_rate", type = "double", comment = "" },
-        { name = "mandant_no", type = "string", comment = "" },
+        { name = "mandant_no", type = "double", comment = "" },
         { name = "load_date_time", type = "string", comment = "" },
         { name = "start_lat", type = "double", comment = "" },
         { name = "start_lot", type = "double", comment = "" },
