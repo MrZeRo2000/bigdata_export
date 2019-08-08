@@ -8,7 +8,7 @@ module "int_dn_dim_chargecode_v2" {
 
     schema_columns = [
         { name = "booking_file_id", type = "double", comment = "" },
-        { name = "charge_code", type = "string", comment = "" },
+        { name = "cahrge_code", type = "string", comment = "" },
         { name = "valid_from", type = "string", comment = "" },
         { name = "valid_to", type = "string", comment = "" },
         { name = "point_of_definition", type = "string", comment = "" },

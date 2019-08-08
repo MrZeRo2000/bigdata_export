@@ -1,6 +1,6 @@
 {
   "tables":
     [
-      {"name": "dn_dim_customer_v2", "predicate": "rownum < 1000", "json_array_size": 5}
+      {"name": "dn_dim_chargecode_v2" }
     ]
 }
