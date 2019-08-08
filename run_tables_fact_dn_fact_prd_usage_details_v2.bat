@@ -1,0 +1,1 @@
+"venv/Scripts/python" src/main.py int.json tables_fact_dn_fact_prd_usage_details_v2.json

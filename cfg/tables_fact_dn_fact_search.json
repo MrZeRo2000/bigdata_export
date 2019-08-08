@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "dn_fact_search"}
+    ]
+}

@@ -1,0 +1,1 @@
+"venv/Scripts/python" src/main.py int.json tables_fact_dn_fact_rental_unsuccess.json

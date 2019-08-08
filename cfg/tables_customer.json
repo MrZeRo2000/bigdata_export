@@ -1,6 +1,6 @@
 {
   "tables":
     [
-      {"name": "dn_dim_customer_v2", "json_array_size": 5}
+      {"name": "dn_dim_customer_v2", "json_array_size": 2}
     ]
 }

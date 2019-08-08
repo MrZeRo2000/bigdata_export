@@ -1,0 +1,14 @@
+{
+  "tables":
+    [
+      {"name": "dn_fact_service_ord_config_v2"},
+      {"name": "dn_fact_dm_kpi"},
+      {"name": "dn_fact_sr_kpi"},
+      {"name": "dn_fact_scrt_inv_correction_fi"},
+      {"name": "dn_fact_deleted_corr_invoices"},
+      {"name": "dn_fact_scrt_inv_correction"},
+      {"name": "dn_fact_dm_damages"},
+      {"name": "dn_fact_qa_checking_detail"},
+      {"name": "dn_fact_mnthl_clsr_vhcls"}
+    ]
+}

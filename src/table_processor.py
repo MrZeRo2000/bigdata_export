@@ -49,10 +49,15 @@ class TableExportService:
         self.__database_chunk_size = self.configuration.get()["database"]["chunk_size"]
         self.__json_array_size = self.configuration.get()["database"]["json_array_size"]
         self.__table_name = table_info["name"]
-        self.__predicate = table_info.get("predicate")
-        table_json_array_size = table_info.get("json_array_size")
+        self.__predicate = self.configuration.get()["database"]["predicate"]
 
-        # json array size defined at table level
+        # predicate defined at table level
+        table_predicate = table_info.get("predicate")
+        if table_predicate is not None:
+            self.__predicate = table_predicate
+
+            # json array size defined at table level
+        table_json_array_size = table_info.get("json_array_size")
         if table_json_array_size is not None:
             self.__json_array_size = table_json_array_size
 
