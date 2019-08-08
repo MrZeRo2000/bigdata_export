@@ -49,7 +49,7 @@ class TableExportService:
         self.__database_chunk_size = self.configuration.get()["database"]["chunk_size"]
         self.__json_array_size = self.configuration.get()["database"]["json_array_size"]
         self.__table_name = table_info["name"]
-        self.__predicate = self.configuration.get()["database"]["predicate"]
+        self.__predicate = self.configuration.get()["database"].get("predicate")
 
         # predicate defined at table level
         table_predicate = table_info.get("predicate")

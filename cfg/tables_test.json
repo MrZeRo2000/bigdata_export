@@ -1,6 +1,6 @@
 {
   "tables":
     [
-      {"name": "dn_dim_chargecode_v2" }
+      {"name": "dn_dim_customer_v2" }
     ]
 }
