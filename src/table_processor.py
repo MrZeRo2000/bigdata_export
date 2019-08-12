@@ -183,8 +183,7 @@ class TableExportService:
         with OracleReader(self.__database_connection_string, query_text) as reader:
             chunk_size = self.get_chunk_size(cycle_num)
             while True:
-                self.logger.debug("starting parallel working cycle")
-
+                self.logger.debug("== starting parallel working cycle ==")
                 with ThreadPoolExecutor(max_workers=2) as executor:
                     self.logger.debug("reading next chunk {0:d}".format(chunk_size))
                     reader_future = \
@@ -198,6 +197,7 @@ class TableExportService:
                                 d, self.__column_types, self.__json_array_size), df)
                     else:
                         self.logger.debug("no rows for exporting")
+                self.logger.debug("== completed parallel working cycle ==")
 
                 exception_response = []
                 reader_response = reader_future.result()
@@ -205,8 +205,9 @@ class TableExportService:
                     if type(reader_response) == pd.DataFrame:
                         df = reader_response.copy()
                         data_size = df.shape[0]
-                        self.logger.debug("read chunk {0:d}".format(data_size))
                         source_row_count += data_size
+                        self.logger.debug("read chunk {0:d}".format(data_size))
+                        self.logger.debug("total rows read {0:d}".format(source_row_count))
                     else:
                         reader_exceptions = [r for r in reader_response
                                              if type(reader_response) == list and isinstance(r, Exception)]
