@@ -1,7 +1,7 @@
 /.idea
 __pycache__
 .cache
-/log/*.txt
+/log/*.*
 /log_server
 /data/*.*
 /venv

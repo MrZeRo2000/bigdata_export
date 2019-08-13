@@ -1,6 +1,6 @@
 {
   "tables":
     [
-      {"name": "dn_fact_service_ord_config_v2" }
+      {"name": "dn_dim_customer_v2" }
     ]
 }
