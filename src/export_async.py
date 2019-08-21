@@ -1,44 +1,25 @@
 
 import asyncio
 from aiohttp import ClientSession
-from context import inject, component
-from logging import Logger
 from database_utils import DataFrameFormatter
+from export_service import ExportService
 
 
-class ExportAsyncService:
+class ExportAsyncService(ExportService):
     """
     Export with data formatting sequentially as needed
     """
-
-    def __init__(self, url, headers):
-        self.__url = url
-        self.__headers = headers
-        self.__log_messages = False
-
-    # noinspection PyPropertyDefinition
-    @property
-    @inject
-    def logger(self) -> Logger: pass
-
-    @property
-    def log_messages(self):
-        return self.__log_messages
-
-    @log_messages.setter
-    def log_messages(self, value):
-        self.__log_messages = value
 
     async def run_one(self, session, column_types, json_array_size, df, i):
         # prepare json data
         d = df.loc[i: i + json_array_size - 1, :]
         rowid_list, json_data = DataFrameFormatter.format_as_json(d, column_types)
 
-        if self.__log_messages:
-            self.logger.debug("headers:{}".format(self.__headers) + ";" + "data:{}".format(json_data),
-                              {"headers": self.__headers, "json_data": json_data})
+        if self._log_messages:
+            self.logger.debug("headers:{}".format(self._headers) + ";" + "data:{}".format(json_data),
+                              {"headers": self._headers, "json_data": json_data})
 
-        async with session.post(self.__url, headers=self.__headers, data=json_data) as response:
+        async with session.post(self._url, headers=self._headers, data=json_data) as response:
             return await response.json(), response.status, rowid_list
 
     async def bound_run_one(self, sem, session, column_types, json_array_size, df, i):
@@ -73,39 +54,20 @@ class ExportAsyncService:
         return future.result()
 
 
-class ExportAsyncService2:
+class ExportAsyncService2(ExportService):
     """
     Export with data formatting in a separate code part
     """
-
-    def __init__(self, url, headers):
-        self.__url = url
-        self.__headers = headers
-        self.__log_messages = False
-
-    # noinspection PyPropertyDefinition
-    @property
-    @inject
-    def logger(self) -> Logger: pass
-
-    @property
-    def log_messages(self):
-        return self.__log_messages
-
-    @log_messages.setter
-    def log_messages(self, value):
-        self.__log_messages = value
-
     async def run_one(self, session, data, i):
         # prepare json data
         rowid_list, json_data = data[i]
 
-        if self.__log_messages:
+        if self._log_messages:
             self.logger.debug("Logging message")
-            self.logger.debug("headers:{}".format(self.__headers))
+            self.logger.debug("headers:{}".format(self._headers))
             self.logger.debug("data:{}".format(json_data))
 
-        async with session.post(self.__url, headers=self.__headers, data=json_data) as response:
+        async with session.post(self._url, headers=self._headers, data=json_data) as response:
             return await response.json(), response.status, rowid_list
 
     async def bound_run_one(self, sem, session, data, i):
@@ -146,39 +108,21 @@ class ExportAsyncService2:
         return future.result()
 
 
-class ExportAsyncService3:
+class ExportAsyncService3(ExportService):
     """
     Export prepared formatted data
     """
-
-    def __init__(self, url, headers):
-        self.__url = url
-        self.__headers = headers
-        self.__log_messages = False
-
-    # noinspection PyPropertyDefinition
-    @property
-    @inject
-    def logger(self) -> Logger: pass
-
-    @property
-    def log_messages(self):
-        return self.__log_messages
-
-    @log_messages.setter
-    def log_messages(self, value):
-        self.__log_messages = value
 
     async def run_one(self, session, data, i):
         # prepare json data
         rowid_list, json_data = data[i]
 
-        if self.__log_messages:
+        if self._log_messages:
             self.logger.debug("Logging message")
-            self.logger.debug("headers:{}".format(self.__headers))
+            self.logger.debug("headers:{}".format(self._headers))
             self.logger.debug("data:{}".format(json_data))
 
-        async with session.post(self.__url, headers=self.__headers, data=json_data) as response:
+        async with session.post(self._url, headers=self._headers, data=json_data) as response:
             return await response.json(), response.status, rowid_list
 
     async def bound_run_one(self, sem, session, data, i):

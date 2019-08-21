@@ -7,7 +7,7 @@ from schema_processor import SchemaParser
 from oracle_utils import OracleReader
 from export_utils import ExportConfiguration
 from export_async import ExportAsyncService, ExportAsyncService2, ExportAsyncService3
-from concurrent import futures
+from export_seq import ExportSeqService
 from concurrent.futures import ThreadPoolExecutor
 from database_utils import DataFrameFormatter
 import pandas as pd
@@ -68,8 +68,16 @@ class TableExportService:
 
         self.__processing_params = self.configuration.get()["processing"]
 
-        self.__export_service = ExportAsyncService(*self.export_configuration.get_data(self.__table_name))
-        self.__export_service.log_messages = self.__processing_params.get("log_messages")
+        processing_params_async_mode = self.__processing_params.get("async_mode") or False
+
+        if processing_params_async_mode:
+            export_service_class = ExportAsyncService
+        else:
+            export_service_class = ExportSeqService
+
+        self.__export_service = export_service_class(*self.export_configuration.get_data(self.__table_name))
+
+        self.__export_service.log_messages = self.__processing_params.get("log_messages") or False
 
     def execute(self):
         if self.__table_name is None:
@@ -103,6 +111,11 @@ class TableExportService:
                 export_method = self.export_query_formatted_thread
             else:
                 raise Exception("Unknown export method:{}".format(export_method))
+
+            self.logger.debug("Export class:{}, export method:{}".format(
+                self.__export_service.__class__.__name__,
+                export_method.__name__)
+            )
 
             source_row_count, error_rowids, error_responses = export_method(query_text, cycle_num)
             total_row_count += source_row_count - len(error_rowids)

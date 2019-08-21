@@ -1,6 +1,6 @@
 {
   "tables":
     [
-      {"name": "dn_dim_customer_v2" }
+      {"name": "dm_dim_promocode_category" }
     ]
 }
