@@ -60,10 +60,11 @@ class ExportSeqService(ExportService):
         s = requests.Session()
 
         retries = Retry(total=5,
-                        backoff_factor=0.3,
+                        backoff_factor=5,
                         status_forcelist=[500, 502, 503, 504])
 
         s.mount('http://', HTTPAdapter(max_retries=retries))
+        s.mount('https://', HTTPAdapter(max_retries=retries))
 
         for i in range(0, len(df), json_array_size):
             responses.append(self.run_one(s, column_types, json_array_size, df, i))
