@@ -59,7 +59,7 @@ class ExportSeqService(ExportService):
 
         s = requests.Session()
 
-        retries = Retry(total=5,
+        retries = Retry(total=10,
                         backoff_factor=0.5,
                         status_forcelist=[500, 502, 503, 504])
 
