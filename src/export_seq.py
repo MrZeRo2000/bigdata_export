@@ -33,7 +33,7 @@ class ExportSeqService(ExportService):
 
             try:
 #               response = requests.post(self._url, headers=self._headers, data=json_data)
-                response = s.post(self._url, headers=self._headers, data=json_data)
+                response = s.post(self._url, data=json_data)
                 if response.status_code == 201:
                     return response.json(), response.status_code, rowid_list
                 else:
@@ -60,11 +60,12 @@ class ExportSeqService(ExportService):
         s = requests.Session()
 
         retries = Retry(total=5,
-                        backoff_factor=5,
+                        backoff_factor=0.5,
                         status_forcelist=[500, 502, 503, 504])
 
         s.mount('http://', HTTPAdapter(max_retries=retries))
         s.mount('https://', HTTPAdapter(max_retries=retries))
+        s.headers.update(self._headers)
 
         for i in range(0, len(df), json_array_size):
             responses.append(self.run_one(s, column_types, json_array_size, df, i))
