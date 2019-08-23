@@ -1,6 +1,7 @@
+
 from app import AppContext
 from config import Configuration
-from context import inject, ComponentFactory
+from context import inject
 import sys
 from logging import Logger
 from table_processor import TableExportService
@@ -54,7 +55,10 @@ class Main:
                 try:
                     self.table_export_service.prepare(table_info)
                     result = self.table_export_service.execute()
-                    self.logger.info("Successfully completed table:{0:s}, rows:{1:d}".format(str(table_info), result), {"table_stats": table_info})
+                    self.logger.info(
+                        "Successfully completed table:{0:s}, rows:{1:d}".format(str(table_info), result),
+                        {"table_stats": table_info}
+                    )
                     self.email_send_service.add_content(
                         "Successfully completed table:{0:s}, rows:{1:d}".format(str(table_info), result))
                 except Exception as e:
@@ -73,4 +77,3 @@ class Main:
 
 if __name__ == "__main__":
     Main(sys.argv).configure().execute()
-
