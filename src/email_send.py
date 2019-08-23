@@ -17,7 +17,8 @@ class EmailSender:
         msg["To"] = self._email_to
         msg["Subject"] = self._email_subject
 
-        msg.add_header("Content-type", "text")
+        msg.add_header("Content-type", "text/html")
+        msg.add_header("charset", "utf-8")
         msg.set_payload(content)
 
         smtp = smtplib.SMTP(self._smtp_server_address)

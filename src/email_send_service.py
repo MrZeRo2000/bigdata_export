@@ -23,7 +23,7 @@ class EmailSendService:
     def send_content(self, content: list):
         if self.configuration.get().get("email_notification"):
             try:
-                content_to_send = reduce(lambda s1, s2: "{}\n{}".format(s1, s2), content)
+                content_to_send = reduce(lambda s1, s2: "{}<BR>{}".format(s1, s2), content)
                 (EmailSender(**self.configuration.get().get("email_settings"))).send_content(content_to_send)
             except Exception as e:
                 self.logger.warning("Exception during sending e-mail: {}, e-mail configuration: {}".format(
