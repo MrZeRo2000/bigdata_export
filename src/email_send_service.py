@@ -20,11 +20,21 @@ class EmailSendService:
     @inject
     def logger(self) -> Logger: pass
 
-    def send_content(self, content: list):
+    def __init__(self):
+        self._content = []
+
+    def add_content(self, content):
+        self._content.append(content)
+
+    def get_content_to_send(self):
+        return reduce(lambda s1, s2: "{}<BR>{}".format(s1, s2), self._content)
+
+    def send_content(self):
         if self.configuration.get().get("email_notification"):
             try:
-                content_to_send = reduce(lambda s1, s2: "{}<BR>{}".format(s1, s2), content)
-                (EmailSender(**self.configuration.get().get("email_settings"))).send_content(content_to_send)
+                (EmailSender(**self.configuration.get().get("email_settings"))).send_content(
+                    self.get_content_to_send()
+                )
             except Exception as e:
                 self.logger.warning("Exception during sending e-mail: {}, e-mail configuration: {}".format(
                     str(e),

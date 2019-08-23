@@ -13,8 +13,6 @@ class Main:
         # AppConfig.execute()
         AppContext.initialize_context(__file__)
 
-        self._table_stats = []
-
     # noinspection PyPropertyDefinition
     @property
     @inject
@@ -57,14 +55,15 @@ class Main:
                     self.table_export_service.prepare(table_info)
                     result = self.table_export_service.execute()
                     self.logger.info("Successfully completed table:{0:s}, rows:{1:d}".format(str(table_info), result), {"table_stats": table_info})
-                    self._table_stats.append("Successfully completed table:{0:s}, rows:{1:d}".format(str(table_info), result))
+                    self.email_send_service.add_content(
+                        "Successfully completed table:{0:s}, rows:{1:d}".format(str(table_info), result))
                 except Exception as e:
                     self.logger.info("Failed table:{}".format(str(table_info)),
                                      {"table_stats": table_info})
-                    self._table_stats.append("Failed table:{}".format(str(table_info)))
+                    self.email_send_service.add_content("Failed table:{}".format(str(table_info)))
                     self.logger.error(e, exc_info=True)
 
-            self.email_send_service.send_content(self._table_stats)
+            self.email_send_service.send_content()
 
             return self
         except Exception as e:
