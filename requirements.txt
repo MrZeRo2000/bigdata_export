@@ -6,3 +6,4 @@ aiohttp
 cchardet
 aiodns
 cx_Oracle
+smtplib

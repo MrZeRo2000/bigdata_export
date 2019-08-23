@@ -57,17 +57,16 @@ class ExportSeqService(ExportService):
     def run_all(self, df, column_types, json_array_size=20):
         responses = []
 
-        s = requests.Session()
+        with requests.Session() as s:
+            retries = Retry(total=10,
+                            backoff_factor=0.5,
+                            status_forcelist=[500, 502, 503, 504])
 
-        retries = Retry(total=10,
-                        backoff_factor=0.5,
-                        status_forcelist=[500, 502, 503, 504])
+            s.mount('http://', HTTPAdapter(max_retries=retries))
+            s.mount('https://', HTTPAdapter(max_retries=retries))
+            s.headers.update(self._headers)
 
-        s.mount('http://', HTTPAdapter(max_retries=retries))
-        s.mount('https://', HTTPAdapter(max_retries=retries))
-        s.headers.update(self._headers)
-
-        for i in range(0, len(df), json_array_size):
-            responses.append(self.run_one(s, column_types, json_array_size, df, i))
+            for i in range(0, len(df), json_array_size):
+                responses.append(self.run_one(s, column_types, json_array_size, df, i))
 
         return responses

@@ -18,5 +18,12 @@
     "export_method3": "read_format_export_tasks_parallel",
     "export_method": "read_export_tasks_parallel",
     "log_messages": false
+  },
+  "email_notification": true,
+  "email_settings": {
+    "smtp_server_address": "172.16.1.25:25",
+    "email_from": "noreply@drive-now.com",
+    "email_to": "roman.pulov@sixt.com",
+    "email_subject": "BigData Export Result"
   }
 }

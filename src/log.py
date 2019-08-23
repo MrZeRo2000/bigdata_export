@@ -43,6 +43,17 @@ class MessagesFilter(logging.Filter):
                record.args.get("json_data") is not None
 
 
+class ListHandler(logging.Handler):
+    def __init__(self, log_list):
+        # run the regular Handler __init__
+        logging.Handler.__init__(self)
+        # Our custom argument
+        self.__log_list = log_list
+
+    def emit(self, record):
+        self.__log_list.append(self.format(record).rstrip("\n"))
+
+
 @component
 class Logger:
     LOG_FILE_FORMAT = "log_%Y-%m-%d-%H-%M-%S-%f.txt"
