@@ -1,7 +1,7 @@
 
 import json
-from unittest import TestCase, skip
 from test_common import ContextTestCase
+from unittest import skip
 from oracle_utils import OracleReader
 from database_utils import QueryBuilder, DataFrameFormatter
 from schema_processor import SchemaParser
@@ -9,10 +9,6 @@ import pandas as pd
 import math
 import os
 import datetime
-import functools
-from multiprocessing.pool import ThreadPool
-from itertools import repeat
-from concurrent.futures import ThreadPoolExecutor
 from concurrent.futures import ProcessPoolExecutor
 
 
@@ -51,7 +47,7 @@ class TestOracleDataFormatter(ContextTestCase):
                 (x, row[x.upper()])
                     if type(row[x.upper()]) != pd.Timestamp else (x, row[x.upper()].strftime('%Y-%m-%dT%H:%M:%SZ')),
                 column_types)
-        ),axis=1))
+        ), axis=1))
 
         # remove NULL and float NAN
         result = list(map(
@@ -94,14 +90,13 @@ class TestOracleDataFormatter(ContextTestCase):
         df = pd.read_csv(data_file_name, sep=";")
         print("read data from file: {0:d} rows".format(df.shape[0]))
 
-        dff = DataFrameFormatter()
-
         t1 = datetime.datetime.now()
         # rowid_list, json_data = dff.format_as_json(df, column_types)
-        # formatted_data = [dff.format_as_json(df.loc[i: i + 20 - 1, :], column_types) for i in range(0, df.shape[0], 20)]
+        # fd = [dff.format_as_json(df.loc[i: i + 20 - 1, :], column_types) for i in range(0, df.shape[0], 20)]
 
         with ProcessPoolExecutor(2) as executor:
-            results_future = [executor.submit(format_df, df.loc[i: i + 20 - 1, :], column_types) for i in range(0, df.shape[0], 20)]
+            results_future = [executor.submit(format_df, df.loc[i: i + 20 - 1, :], column_types)
+                              for i in range(0, df.shape[0], 20)]
 
         results = [r.result() for r in results_future]
 

@@ -44,7 +44,7 @@ class ExportAsyncService(ExportService):
             return await responses
 
     def run_all(self, df, column_types, json_array_size=20):
-#        loop = asyncio.get_event_loop()
+        # loop = asyncio.get_event_loop()
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
 
@@ -98,7 +98,7 @@ class ExportAsyncService2(ExportService):
             return await responses
 
     def run_all(self, df, column_types, json_array_size=20):
-#        loop = asyncio.get_event_loop()
+        # loop = asyncio.get_event_loop()
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
 
@@ -148,7 +148,7 @@ class ExportAsyncService3(ExportService):
             return await responses
 
     def run_all(self, formatted_data):
-#        loop = asyncio.get_event_loop()
+        # loop = asyncio.get_event_loop()
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
 

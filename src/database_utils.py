@@ -1,15 +1,10 @@
-
-from config import Configuration
 from context import inject, component
 import math
 import json
 import pandas as pd
 from pandas import NaT
 import datetime
-from logging import Logger
-from log import log_method
 from functools import reduce
-from schema_processor import SchemaParser
 
 
 class QueryRepository:
@@ -50,16 +45,18 @@ class DataFrameFormatter:
             map(
                 lambda x:
                 (x, row[x.upper()])
-                    if type(row[x.upper()]) not in [pd.Timestamp, datetime.datetime]
-                    else (x, row[x.upper()].strftime(QueryRepository.TIMESTAMP_FORMAT)),
+                if type(row[x.upper()]) not in [pd.Timestamp, datetime.datetime]
+                else (x, row[x.upper()].strftime(QueryRepository.TIMESTAMP_FORMAT)),
                 column_types)
-        ),axis=1))
+        ), axis=1))
 
         # remove NULL and float NAN and NaT
         result = list(map(
             lambda x: {
                 k: v for k, v in x.items()
-                if v is not None and not isinstance(v, type(NaT)) and (type(v) != float or (type(v) == float and not math.isnan(v)))
+                if v is not None
+                   and not isinstance(v, type(NaT))
+                   and (type(v) != float or (type(v) == float and not math.isnan(v)))
             },
             result)
         )

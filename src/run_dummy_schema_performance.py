@@ -1,7 +1,6 @@
 
 import requests
 import os
-import json
 from schema_processor import SchemaParser, SchemaDataGenerator
 from data_generatior import DataGenerator
 from timeit import default_timer as timer
@@ -82,7 +81,7 @@ class DummySchemaPerformanceRunner:
             end_time = timer()
 
             self.__logger.log(logging.INFO, "Execution time: " + str(end_time - start_time))
-            stats.update({batch_size:end_time - start_time})
+            stats.update({batch_size: end_time - start_time})
 
         stats_file_name = self.get_full_data_file_name("stats.txt")
         stats_file = csv.writer(open(stats_file_name, "w"), delimiter=",", quoting=csv.QUOTE_NONNUMERIC)
@@ -93,7 +92,8 @@ class DummySchemaPerformanceRunner:
         self.__logger.log(logging.INFO, "Finished running set")
 
     def run_set_parallel(self, size, num, num_workers):
-        self.__logger.log(logging.INFO, "Started running parallel size={} num={} workers={}".format(size, num, num_workers))
+        self.__logger.log(logging.INFO,
+                          "Started running parallel size={} num={} workers={}".format(size, num, num_workers))
 
         stats = {}
         parallel_sizes = [size for _ in range(num)]

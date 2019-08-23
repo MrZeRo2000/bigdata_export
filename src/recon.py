@@ -34,13 +34,15 @@ if __name__ == "__main__":
     df2 = pd.read_csv(server_file_name_2, sep=',')
 
     df12 = df1.set_index('value').join(df2.set_index('value'), rsuffix='_2')[["number_of_rows", "number_of_rows_2"]]
-    df12["rows"] = df12["number_of_rows_2"]  - df12["number_of_rows"]
+    df12["rows"] = df12["number_of_rows_2"] - df12["number_of_rows"]
 
     with open(local_file_name, mode='r') as f:
         lines = f.readlines()
 
-    local_names = [re.search(r"\'name\': \'(\S+)\'", line)[1] for line in lines if re.search(r'rows:(\d+)', line) is not None]
-    local_rows = [re.search(r'rows:(\d+)', line)[1] for line in lines if re.search(r'rows:(\d+)', line) is not None]
+    local_names = [re.search(r"\'name\': \'(\S+)\'", line)[1]
+                   for line in lines if re.search(r'rows:(\d+)', line) is not None]
+    local_rows = [re.search(r'rows:(\d+)', line)[1]
+                  for line in lines if re.search(r'rows:(\d+)', line) is not None]
 
     df3 = pd.DataFrame({'name': local_names, 'rows': local_rows})
 

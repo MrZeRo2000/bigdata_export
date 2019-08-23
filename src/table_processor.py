@@ -1,4 +1,3 @@
-
 from context import component, inject
 from config import Configuration
 from logging import Logger
@@ -6,7 +5,7 @@ from database_utils import QueryBuilder
 from schema_processor import SchemaParser
 from oracle_utils import OracleReader
 from export_utils import ExportConfiguration
-from export_async import ExportAsyncService, ExportAsyncService2, ExportAsyncService3
+from export_async import ExportAsyncService, ExportAsyncService3
 from export_seq import ExportSeqService
 from concurrent.futures import ThreadPoolExecutor
 from database_utils import DataFrameFormatter
@@ -20,22 +19,26 @@ class TableExportService:
     # noinspection PyPropertyDefinition
     @property
     @inject
-    def configuration(self) -> Configuration: pass
+    def configuration(self) -> Configuration:
+        pass
 
     # noinspection PyPropertyDefinition
     @property
     @inject
-    def logger(self) -> Logger: pass
+    def logger(self) -> Logger:
+        pass
 
     # noinspection PyPropertyDefinition
     @property
     @inject
-    def query_builder(self) -> QueryBuilder: pass
+    def query_builder(self) -> QueryBuilder:
+        pass
 
     # noinspection PyPropertyDefinition
     @property
     @inject
-    def export_configuration(self) -> ExportConfiguration: pass
+    def export_configuration(self) -> ExportConfiguration:
+        pass
 
     def __init__(self):
         self.__database_connection_string = self.__database_chunk_size = self.__json_array_size = None
@@ -284,7 +287,8 @@ class TableExportService:
                         self.logger.debug("formatting chunk {0:d}".format(df.shape[0]))
                         format_future = executor.submit(
                             lambda d, size, types: [DataFrameFormatter.format_as_json(d.loc[i: i + size - 1, :], types)
-                             for i in range(0, d.shape[0], size)], df, self.FORMATTED_DATE_SIZE, self.__column_types
+                                                    for i in range(0, d.shape[0], size)], df, self.FORMATTED_DATE_SIZE,
+                            self.__column_types
                         )
                         """
                         format_future = [executor.submit(
@@ -315,10 +319,10 @@ class TableExportService:
                 else:
                     self.logger.debug("no more rows read")
                     df = None
-#                    break
+                #                    break
 
                 if format_future is not None:
-#                    format_results = [r.result() for r in format_future]
+                    #                    format_results = [r.result() for r in format_future]
                     format_results = format_future.result()
 
                     if format_results is not None:

@@ -77,7 +77,7 @@ class TestSchemaParserTF(TestCase):
         self.assertEqual(6, len(json_data["schema_columns"]))
 
     def test_schema_parser_tf(self):
-        schema_parser = SchemaParser(self.data_file_name);
+        schema_parser = SchemaParser(self.data_file_name)
         data = schema_parser.parse()
         self.assertEqual(6, len(data))
 

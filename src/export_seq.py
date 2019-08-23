@@ -32,7 +32,7 @@ class ExportSeqService(ExportService):
                 time.sleep(self.RETRY_DELAY)
 
             try:
-#               response = requests.post(self._url, headers=self._headers, data=json_data)
+                # response = requests.post(self._url, headers=self._headers, data=json_data)
                 response = s.post(self._url, data=json_data)
                 if response.status_code == 201:
                     return response.json(), response.status_code, rowid_list

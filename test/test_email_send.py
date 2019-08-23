@@ -1,13 +1,12 @@
 
 from unittest import TestCase
 import smtplib
-from email.message import Message
 import email.utils
 
 
 class TestEmailSend(TestCase):
     def setUp(self) -> None:
-        self.__email_from =  "noreply@drive-now.com"
+        self.__email_from = "noreply@drive-now.com"
         self.__email_to = "roman.pulov@sixt.com"
         self.__email_subject = "Test e-mail"
         self.__smtp_server_address = "172.16.1.25:25"

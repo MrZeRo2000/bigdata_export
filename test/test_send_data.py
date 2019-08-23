@@ -2,7 +2,6 @@
 from unittest import TestCase
 import requests
 import os
-import json
 from schema_processor import SchemaParser, SchemaDataGenerator
 from data_generatior import DataGenerator
 
