@@ -1,0 +1,29 @@
+{
+  "logging": {
+    "level": 10
+  },
+  "database": {
+    "connection": "drivenow_bi/drivenow_bi@sxbiprodx",
+    "chunk_size": 100000,
+    "json_array_size": 200
+  },
+  "big_data": {
+    "url": "https://gsq0mgv1i6.execute-api.eu-central-1.amazonaws.com/int/{}",
+    "api_key": "HdnVmPVaPn8vq8pY3Zcs123oztXfBnPy9TGRIR63"
+  },
+  "processing": {
+    "async_mode": false,
+    "export_method1": "read_export_tasks_sequential",
+    "export_method2": "read_export_tasks_parallel",
+    "export_method3": "read_format_export_tasks_parallel",
+    "export_method": "read_export_tasks_parallel",
+    "log_messages1": true
+  },
+  "email_notification": true,
+  "email_settings": {
+    "smtp_server_address": "172.16.1.25:25",
+    "email_from": "noreply@drive-now.com",
+    "email_to": "roman.pulov@sixt.com",
+    "email_subject": "BigData Export Result"
+  }
+}
