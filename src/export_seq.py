@@ -10,6 +10,7 @@ from export_service import ExportService
 class ExportSeqService(ExportService):
     RETRY_DELAY = 1
     RETRY_COUNT_LIMIT = 10
+    SERVER_RESPONSE_TIMEOUT = 15
     """
     Export data in sequence
     """
@@ -32,8 +33,7 @@ class ExportSeqService(ExportService):
                 time.sleep(self.RETRY_DELAY)
 
             try:
-                # response = requests.post(self._url, headers=self._headers, data=json_data)
-                response = s.post(self._url, data=json_data)
+                response = s.post(self._url, data=json_data, timeout=self.SERVER_RESPONSE_TIMEOUT)
                 if response.status_code == 201:
                     return response.json(), response.status_code, rowid_list
                 else:
