@@ -27,7 +27,8 @@ if __name__ == "__main__":
 
     server_file_name_1 = get_full_path(SERVER_LOG_PATH, sys.argv[1])
     server_file_name_2 = get_full_path(SERVER_LOG_PATH, sys.argv[2])
-    local_file_name = get_full_path(LOCAL_LOG_PATH, sys.argv[3])
+#    local_file_name = get_full_path(LOCAL_LOG_PATH, sys.argv[3])
+    local_file_names = [get_full_path(LOCAL_LOG_PATH, s) for s in sys.argv[3].split(",")]
     recon_file_name = get_full_path(SERVER_LOG_PATH, "recon_{}_{}".format(sys.argv[1], sys.argv[2]))
 
     df1 = pd.read_csv(server_file_name_1, sep=',')
@@ -36,8 +37,13 @@ if __name__ == "__main__":
     df12 = df1.set_index('value').join(df2.set_index('value'), rsuffix='_2')[["number_of_rows", "number_of_rows_2"]]
     df12["rows"] = df12["number_of_rows_2"] - df12["number_of_rows"]
 
-    with open(local_file_name, mode='r') as f:
-        lines = f.readlines()
+    lines = []
+
+    for local_file_name in local_file_names:
+        with open(local_file_name, mode='r') as f:
+            lines.extend(f.readlines())
+
+    lines = [f for local_file_name in local_file_names for f in open(local_file_name, mode='r')]
 
     local_names = [re.search(r"\'name\': \'(\S+)\'", line)[1]
                    for line in lines if re.search(r'rows:(\d+)', line) is not None]
