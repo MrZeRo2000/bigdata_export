@@ -1,0 +1,1 @@
+"venv/Scripts/python" src/recon.py tables_migration20190829173516.csv tables_migration20190902093623.csv log_stats_2019_08_30.txt
