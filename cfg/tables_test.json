@@ -1,7 +1,6 @@
 {
   "tables":
     [
-      {"name": "dm_dim_promocode_category" },
-      {"name": "dm_dim_promocode_subcategory"}
+      {"name": "dn_fact_rental" }
     ]
 }

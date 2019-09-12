@@ -2,6 +2,7 @@ from context import inject, component
 import math
 import json
 import pandas as pd
+import numpy as np
 from pandas import NaT
 import datetime
 from functools import reduce
@@ -37,6 +38,16 @@ class QueryBuilder:
 
 
 class DataFrameFormatter:
+
+    @staticmethod
+    def prepare_df(df, column_types):
+        DataFrameFormatter.convert_to_double(df, column_types)
+
+    @staticmethod
+    def convert_to_double(df, column_types):
+        # convert numbers to double
+        double_fields = [k.upper() for k in column_types if column_types[k] == "double"]
+        df[double_fields] = df[double_fields].apply(np.float64)
 
     @staticmethod
     def format_as_json(df, column_types):

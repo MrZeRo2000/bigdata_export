@@ -4,6 +4,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import time
 from database_utils import DataFrameFormatter
+import numpy as np
 from export_service import ExportService
 
 
@@ -56,6 +57,9 @@ class ExportSeqService(ExportService):
                 raise Exception("Unknown error processing {}".format(str(rowid_list)))
 
     def run_all(self, df, column_types, json_array_size=20):
+        # fix for conversion of double type
+        DataFrameFormatter.prepare_df(df, column_types)
+
         responses = []
 
         with requests.Session() as s:

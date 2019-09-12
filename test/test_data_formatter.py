@@ -6,6 +6,7 @@ from oracle_utils import OracleReader
 from database_utils import QueryBuilder, DataFrameFormatter
 from schema_processor import SchemaParser
 import pandas as pd
+import numpy as np
 import math
 import os
 import datetime
@@ -38,14 +39,26 @@ class TestOracleDataFormatter(ContextTestCase):
         for row in df.iterrows():
             result.append(dict(map(lambda x: (x, row[1][x.upper()]), column_types)))
 
-#        result = list(df.apply(lambda row: dict(map(lambda x: (x, row[x.upper()]), column_types)), axis=1))
+        # double
+        double_fields = [k.upper() for k in column_types if column_types[k] == "double"]
+        df[double_fields] = df[double_fields].apply(np.float64)
+
+        date_fields = [n for n, t in df.dtypes.iteritems() if t.type in [np.datetime64]]
+
+
+        # another version to convert double fields
+        # for col in double_fields:
+        #    df[col] = df[col].astype('float64')
+
+        result = list(df.apply(lambda row: dict(map(lambda x: (x, row[x.upper()]), column_types)), axis=1))
 
         # convert replacing TimeStamps
         result = list(df.apply(lambda row: dict(
             map(
                 lambda x:
                 (x, row[x.upper()])
-                    if type(row[x.upper()]) != pd.Timestamp else (x, row[x.upper()].strftime('%Y-%m-%dT%H:%M:%SZ')),
+                if type(row[x.upper()]) not in [pd.Timestamp, datetime.datetime]
+                else (x, row[x.upper()].strftime('%Y-%m-%dT%H:%M:%SZ')),
                 column_types)
         ), axis=1))
 
