@@ -47,7 +47,8 @@ class DataFrameFormatter:
     def convert_to_double(df, column_types):
         # convert numbers to double
         double_fields = [k.upper() for k in column_types if column_types[k] == "double"]
-        df[double_fields] = df[double_fields].apply(np.float64)
+        if len(double_fields) > 0:
+            df[double_fields] = df[double_fields].apply(np.float64)
 
     @staticmethod
     def format_as_json(df, column_types):
