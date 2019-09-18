@@ -64,7 +64,9 @@ class TableExportService:
         if table_json_array_size is not None:
             self.__json_array_size = table_json_array_size
 
-        schema_file_name = self.configuration.get_schema_file_name(self.__table_name)
+        pure_table_name = self.__table_name.split(".")[-1]
+
+        schema_file_name = self.configuration.get_schema_file_name(pure_table_name)
         schema_parser = SchemaParser(schema_file_name)
         self.__column_types = schema_parser.get_column_types()
         self.__column_names_string = schema_parser.get_columns_string()
@@ -78,7 +80,7 @@ class TableExportService:
         else:
             export_service_class = ExportSeqService
 
-        self.__export_service = export_service_class(*self.export_configuration.get_data(self.__table_name))
+        self.__export_service = export_service_class(*self.export_configuration.get_data(pure_table_name))
 
         self.__export_service.log_messages = self.__processing_params.get("log_messages") or False
 
