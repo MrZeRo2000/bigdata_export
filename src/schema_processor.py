@@ -21,12 +21,16 @@ class SchemaParser:
 #        data = re.search(r'schema_columns:\[(.*?)\]', data, re.DOTALL).group(0)
         data = re.search(r'schema_columns:\[(.*?)\]\n', data, re.DOTALL).group(0)
 
+        # add quotes 3
+        data = reduce(lambda prev, current: re.sub(current + "(\\s*):", "\"" + current + "\":", prev),
+               [data, "name", "type", "comment", "schema_columns"])
+
         # add quotes
-        data = data.\
-            replace("name:", "\"name\":").\
-            replace("type:", "\"type\":").\
-            replace("comment:", "\"comment\":").\
-            replace("schema_columns:", "\"schema_columns\":")
+        # data = data.\
+        #     replace("name:", "\"name\":").\
+        #     replace("type:", "\"type\":").\
+        #     replace("comment:", "\"comment\":").\
+        #     replace("schema_columns:", "\"schema_columns\":")
 
         # add brackets
         data = "{" + data + "}"
