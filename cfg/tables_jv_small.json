@@ -1,0 +1,12 @@
+{
+  "tables":
+    [
+      {"name": "jv_payment_instrument_type" },
+      {"name": "jv_product" },
+      {"name": "jv_product_attribute" },
+      {"name": "jv_product_availability" },
+      {"name": "jvpoint" },
+      {"name": "jvpolygon" },
+      {"name": "jvzone" }
+    ]
+}

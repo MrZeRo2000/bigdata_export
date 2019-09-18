@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "jv_payment_instrument_attr" }
+    ]
+}

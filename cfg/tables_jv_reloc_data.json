@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "reporting.jv_reloc_data" }
+    ]
+}
