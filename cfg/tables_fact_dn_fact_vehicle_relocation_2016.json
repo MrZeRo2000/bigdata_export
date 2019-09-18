@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "dn_fact_vehicle_relocation", "predicate": "day_id BETWEEN TO_DATE('01.01.2016', 'dd.mm.yyyy') AND TO_DATE('01.01.2017', 'dd.mm.yyyy') - 1/24/60/60"}
+    ]
+}

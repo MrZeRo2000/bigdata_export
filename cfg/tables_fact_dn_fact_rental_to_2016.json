@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "dn_fact_rental", "predicate": "date_last_update < TO_DATE('01.01.2016', 'dd.mm.yyyy')"}
+    ]
+}

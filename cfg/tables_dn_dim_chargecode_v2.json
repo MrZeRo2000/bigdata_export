@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "dn_dim_chargecode_v2" }
+    ]
+}

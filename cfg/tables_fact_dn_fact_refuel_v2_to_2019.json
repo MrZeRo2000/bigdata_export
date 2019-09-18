@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "dn_fact_refuel_v2", "predicate": "activity_date < TO_DATE('01.01.2019', 'dd.mm.yyyy')"}
+    ]
+}

@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "dn_fact_rental", "predicate": "date_last_update BETWEEN TO_DATE('01.01.2018', 'dd.mm.yyyy') AND TO_DATE('01.01.2019', 'dd.mm.yyyy') - 1/24/60/60"}
+    ]
+}

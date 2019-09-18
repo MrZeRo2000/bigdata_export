@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "dn_fact_vehicle_relocation", "predicate": "day_id < TO_DATE('01.01.2016', 'dd.mm.yyyy')"}
+    ]
+}

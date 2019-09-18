@@ -11,7 +11,7 @@ from export_service import ExportService
 class ExportSeqService(ExportService):
     RETRY_DELAY = 1
     RETRY_COUNT_LIMIT = 10
-    SERVER_RESPONSE_TIMEOUT = 15
+    SERVER_RESPONSE_TIMEOUT = 60
     """
     Export data in sequence
     """
