@@ -53,18 +53,25 @@ class Main:
                 self.logger.info("Started table:{}".format(str(table_info)), {"table_stats": table_info})
 
                 try:
+                    # start event
+                    self.email_send_service.add_start_event(str(table_info))
+
                     self.table_export_service.prepare(table_info)
                     result = self.table_export_service.execute()
                     self.logger.info(
                         "Successfully completed table:{0:s}, rows:{1:d}".format(str(table_info), result),
                         {"table_stats": table_info}
                     )
-                    self.email_send_service.add_content(
-                        "Successfully completed table:{0:s}, rows:{1:d}".format(str(table_info), result))
+
+                    # success event
+                    self.email_send_service.add_success_event(str(table_info), result)
                 except Exception as e:
                     self.logger.info("Failed table:{}".format(str(table_info)),
                                      {"table_stats": table_info})
-                    self.email_send_service.add_content("Failed table:{}".format(str(table_info)))
+
+                    # failure event
+                    self.email_send_service.add_failure_event(str(table_info))
+
                     self.logger.error(e, exc_info=True)
 
             self.email_send_service.send_content()

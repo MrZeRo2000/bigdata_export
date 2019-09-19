@@ -125,6 +125,10 @@ class TableExportService:
             source_row_count, error_rowids, error_responses = export_method(query_text, cycle_num)
             total_row_count += source_row_count - len(error_rowids)
 
+            if len([e for e in error_responses if e[:3] == "400"]) > 0:
+                self.logger.error("Found 400 errors, exiting")
+                break
+
             if len(error_rowids) == 0:
                 break
             else:
