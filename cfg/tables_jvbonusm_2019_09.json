@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "jvbonusm", "predicate": "bnum <= 22095287" }
+    ]
+}

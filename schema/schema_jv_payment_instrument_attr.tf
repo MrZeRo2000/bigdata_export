@@ -1,4 +1,4 @@
-module "prod_jv_payment_instrument_attr" {
+module "int_jv_payment_instrument_attr" {
   source     = "../../../modules/schema"
   account_id = var.account_id
 
@@ -24,7 +24,7 @@ module "prod_jv_payment_instrument_attr" {
     },
     {
       name    = "update_date",
-      type    = "bigint",
+      type    = "string",
       comment = ""
     }
   ]
