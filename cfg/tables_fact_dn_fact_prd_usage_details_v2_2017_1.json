@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "dn_fact_prd_usage_details_v2", "predicate": "booking_date BETWEEN TO_DATE('01.01.2017', 'dd.mm.yyyy') AND TO_DATE('01.07.2017', 'dd.mm.yyyy') - 1/24/60/60"}
+    ]
+}
