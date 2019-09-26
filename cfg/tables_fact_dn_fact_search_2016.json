@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "dn_fact_search", "predicate":"search_date < TO_DATE('01.01.2017', 'dd.mm.yyyy')"}
+    ]
+}
