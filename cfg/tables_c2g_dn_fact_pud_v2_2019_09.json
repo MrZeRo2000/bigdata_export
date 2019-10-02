@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "c2g_dn_fact_pud_v2_2019_09", "schema_name": "dn_fact_prd_usage_details_v2"}
+    ]
+}
