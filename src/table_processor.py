@@ -43,6 +43,7 @@ class TableExportService:
     def __init__(self):
         self.__database_connection_string = self.__database_chunk_size = self.__json_array_size = None
         self.__table_name = self.__predicate = None
+        self.__schema_name = None
         self.__column_types = self.__column_names_string = None
         self.__export_service = None
         self.__processing_params = None
@@ -52,6 +53,7 @@ class TableExportService:
         self.__database_chunk_size = self.configuration.get()["database"]["chunk_size"]
         self.__json_array_size = self.configuration.get()["database"]["json_array_size"]
         self.__table_name = table_info["name"]
+        self.__schema_name = table_info.get("schema_name")
         self.__predicate = self.configuration.get()["database"].get("predicate")
 
         # predicate defined at table level
@@ -64,7 +66,10 @@ class TableExportService:
         if table_json_array_size is not None:
             self.__json_array_size = table_json_array_size
 
-        pure_table_name = self.__table_name.split(".")[-1]
+        if self.__schema_name is None:
+            pure_table_name = self.__table_name.split(".")[-1]
+        else:
+            pure_table_name = self.__schema_name
 
         schema_file_name = self.configuration.get_schema_file_name(pure_table_name)
         schema_parser = SchemaParser(schema_file_name)
@@ -166,10 +171,10 @@ class TableExportService:
         error_responses = []
         with OracleReader(self.__database_connection_string, query_text) as r:
             chunk_size = self.get_chunk_size(cycle_num)
-            self.logger.debug("reading chunk {0:d}".format(chunk_size))
+            self.logger.debug("reading chunk {0:,d}".format(chunk_size))
             for df in r.get(chunk_size):
                 data_size = df.shape[0]
-                self.logger.debug("exporting chunk {0:d}, array size {1:d}".format(data_size, self.__json_array_size))
+                self.logger.debug("exporting chunk {0:,d}, array size {1:d}".format(data_size, self.__json_array_size))
                 source_row_count += data_size
 
                 export_result = self.__export_service.run_all(df, self.__column_types, self.__json_array_size)
@@ -207,13 +212,13 @@ class TableExportService:
             while True:
                 self.logger.debug("== starting parallel working cycle ==")
                 with ThreadPoolExecutor(max_workers=2) as executor:
-                    self.logger.debug("reading next chunk {0:d}".format(chunk_size))
+                    self.logger.debug("reading next chunk {0:,d}".format(chunk_size))
                     reader_future = \
                         executor.submit(lambda r: r.read(chunk_size), reader)
 
                     if df is not None:
                         self.logger.debug(
-                            "exporting chunk {0:d}, array size {1:d}".format(df.shape[0], self.__json_array_size))
+                            "exporting chunk {0:,d}, array size {1:d}".format(df.shape[0], self.__json_array_size))
                         export_future = \
                             executor.submit(lambda d: self.__export_service.run_all(
                                 d, self.__column_types, self.__json_array_size), df)
@@ -228,8 +233,8 @@ class TableExportService:
                         df = reader_response.copy()
                         data_size = df.shape[0]
                         source_row_count += data_size
-                        self.logger.debug("read chunk {0:d}".format(data_size))
-                        self.logger.debug("total rows read {0:d}".format(source_row_count))
+                        self.logger.debug("read chunk {0:,d}".format(data_size))
+                        self.logger.debug("total rows read {0:,d}".format(source_row_count))
                     else:
                         reader_exceptions = [r for r in reader_response
                                              if type(reader_response) == list and isinstance(r, Exception)]
@@ -285,12 +290,12 @@ class TableExportService:
             while True:
                 self.logger.debug("starting parallel working cycle")
                 with ThreadPoolExecutor(max_workers=3) as executor:
-                    self.logger.debug("reading next chunk {0:d}".format(chunk_size))
+                    self.logger.debug("reading next chunk {0:,d}".format(chunk_size))
                     reader_future = \
                         executor.submit(lambda r: r.read(chunk_size), reader)
 
                     if df is not None:
-                        self.logger.debug("formatting chunk {0:d}".format(df.shape[0]))
+                        self.logger.debug("formatting chunk {0:,d}".format(df.shape[0]))
                         format_future = executor.submit(
                             lambda d, size, types: [DataFrameFormatter.format_as_json(d.loc[i: i + size - 1, :], types)
                                                     for i in range(0, d.shape[0], size)], df, self.FORMATTED_DATE_SIZE,
@@ -307,7 +312,7 @@ class TableExportService:
                         format_future = None
 
                     if dff is not None:
-                        self.logger.debug("exporting chunk {0:d}".format(len(dff)))
+                        self.logger.debug("exporting chunk {0:,d}".format(len(dff)))
                         export_future = \
                             executor.submit(lambda d: export_service.run_all(d), dff)
                     else:
@@ -320,7 +325,7 @@ class TableExportService:
                 if reader_response is not None:
                     df = reader_response.copy()
                     data_size = df.shape[0]
-                    self.logger.debug("read chunk {0:d}".format(data_size))
+                    self.logger.debug("read chunk {0:,d}".format(data_size))
                     source_row_count += data_size
                 else:
                     self.logger.debug("no more rows read")
