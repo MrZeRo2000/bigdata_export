@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "c2g_jv_reloc_data_2019_09", "schema_name": "jv_reloc_data"}
+    ]
+}
