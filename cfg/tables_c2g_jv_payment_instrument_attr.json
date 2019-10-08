@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "c2g_jv_payment_instrument_attr", "schema_name": "jv_payment_instrument_attr" }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "c2g_jvmessage_2016", "schema_name": "jvmessage" }
+    ]
+}
