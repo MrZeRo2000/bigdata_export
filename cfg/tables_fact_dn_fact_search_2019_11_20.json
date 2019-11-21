@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "dn_fact_search", "predicate":"search_date BETWEEN TO_DATE('01.09.2019', 'dd.mm.yyyy') AND TO_DATE('20.11.2019', 'dd.mm.yyyy') - 1/24/60/60"}
+    ]
+}

@@ -1,7 +1,7 @@
 /.idea
 __pycache__
 .cache
-/log/*.*
+/log
 /log_server
 /data/test*.*
 /data/stat*.*
