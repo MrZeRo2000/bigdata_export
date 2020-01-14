@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "jvbonusm", "predicate": "bnum BETWEEN 23060930 AND 23383696" }
+    ]
+}
