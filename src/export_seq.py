@@ -40,8 +40,8 @@ class ExportSeqService(ExportService):
                 else:
                     error_exception = None
                     error_response = response
-                    self.logger.warning("Error response from the server: {}, details: {}".
-                                        format(str(error_response), response.json()))
+                    self.logger.warning("Error response from the server: {}, details: {}, data: {}".
+                                        format(str(error_response), response.json(), json_data))
             except Exception as e:
                 self.logger.warning("Exception during transfer of {}: {}".format(str(rowid_list), str(e)))
                 error_exception = e

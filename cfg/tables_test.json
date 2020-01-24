@@ -1,6 +1,6 @@
 {
   "tables":
     [
-      {"name": "c2g_jvres_2019_09", "schema_name": "jvres"}
+      {"name": "jv_product", "schema_name": "jv_product"}
     ]
 }
