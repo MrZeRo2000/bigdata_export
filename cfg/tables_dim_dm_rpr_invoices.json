@@ -1,0 +1,5 @@
+{
+  "tables": [
+    {"name": "dn_dim_dm_rpr_invoices"}
+  ]
+}
