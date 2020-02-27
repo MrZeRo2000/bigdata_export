@@ -1,0 +1,1000 @@
+ 1045  mc
+ 1046  nohup ./venv/bin/python3.7 src/main.py prod.json tables_fact_dn_fact_prd_usage_details_v2_2015.json &
+ 1047  mc
+ 1048  ps ax|grap python3.7
+ 1049  ps ax|grep python3.7
+ 1050  mc
+ 1051  ps ax|grep python3.7
+ 1052  mc
+ 1053  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_dim_small.json &
+ 1054  cd bigdata_export/
+ 1055  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_dim_small.json &
+ 1056  mc
+ 1057  ./venv/bin/python3.7 src/main.py prod.json tables_dn_dim_chargecode_v2
+ 1058  ./venv/bin/python3.7 src/main.py prod.json tables_dn_dim_chargecode_v2.json
+ 1059  mc
+ 1060  nohup ./venv/bin/python3.7 src/main.py prod-prod.json table_dim_customer.json &
+ 1061  mc
+ 1062  ps ax|grep python3.7
+ 1063  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_to_2014.json &
+ 1064  mc
+ 1065  ps ax|grep python3.7
+ 1066  mc
+ 1067  cd bigdata_export/
+ 1068  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_dn_dim_chargecode_v2.json &
+ 1069  mc
+ 1070  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_to_2016.json &
+ 1071  mc
+ 1072  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_vehicle_relocation_to_2016.json &
+ 1073  mc
+ 1074  ps ax|grep python3.7
+ 1075  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_refuel_v2_to_2019.json &
+ 1076  mc
+ 1077  px as|grep python3.7
+ 1078  ps ax|grep python3.7
+ 1079  top
+ 1080  mc
+ 1081  ps ax|grep python3.7
+ 1082  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2014.json &
+ 1083  mc
+ 1084  ps ax|grep python3.7
+ 1085  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2014.json &
+ 1086  mc
+ 1087  ps ax|grep python3.7
+ 1088  mc
+ 1089  ps ax|grep python3.7
+ 1090  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2015.json &
+ 1091  mc
+ 1092  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_2016.json &
+ 1093  mc
+ 1094  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_vehicle_relocation_2016.json &
+ 1095  mc
+ 1096  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_refuel_v2_2019_09.json &
+ 1097  mc
+ 1098  ./venv/bin/python3.7 src/main.py core-int.json tables_jv_payment_instrument.json
+ 1099  ./venv/bin/python3.7 src/main.py core_int.json tables_jv_payment_instrument.json
+ 1100  ps ax|grep python3.7
+ 1101  mc
+ 1102  cd bigdata_export/
+ 1103  mc
+ 1104  ps ax|grep python3.7
+ 1105  ./venv/bin/python3.7 src/main.py core_int.json tables_jv_payment_instrument.json
+ 1106  ./venv/bin/python3.7 src/main.py core_int.json tables_jv_payment_instrument_attr.json
+ 1107  ./venv/bin/python3.7 src/main.py core_int.json tables_jv_payment_instrument.json
+ 1108  ./venv/bin/python3.7 src/main.py core_int.json tables_jv_payment_instrument_attr.json
+ 1109  mc
+ 1110  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2016_1.json &
+ 1111  mc
+ 1112  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_2017.json &
+ 1113  mc
+ 1114  ./venv/bin/python3.7 src/main.py core_int.json tables_jv_payment_instrument_attr.json
+ 1115  ./venv/bin/python3.7 src/main.py core_prod.json tables_jvbonus_2019_09.json
+ 1116  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jvbonus_2019_09.json &
+ 1117  mc
+ 1118  ps ax|grep python3.7
+ 1119  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jvbonusm_2019_09.json &
+ 1120  mc
+ 1121  ps ax|grep python3.7
+ 1122  ./venv/bin/python3.7 src/main.py core_int.json tables_jv_payment_instrument.json
+ 1123  cd bigdata_export/
+ 1124  ./venv/bin/python3.7 src/main.py core_int.json schema_jv_payment_instrument_attr.tf
+ 1125  ./venv/bin/python3.7 src/main.py core_int.json tables_jv_payment_instrument_attr.json
+ 1126  ps ax|grep python3.7
+ 1127  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_vehicle_relocation_2017.json &
+ 1128  mc
+ 1129  ps ax|grep python3.7
+ 1130  mc
+ 1131  ps ax|grep python3.7
+ 1132  mc
+ 1133  ps ax|grep python3.7
+ 1134  top
+ 1135  ps ax|grep python3.7
+ 1136  mc
+ 1137  pws
+ 1138  pwd
+ 1139  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_reloc_data_2019_09.json &
+ 1140  mc
+ 1141  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2016_2.json &
+ 1142  mc
+ 1143  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_2018.json &
+ 1144  mc
+ 1145  px ax|grep python3.7
+ 1146  ps ax|grep python3.7
+ 1147  mc
+ 1148  ps ax|grep python3.7
+ 1149  mc
+ 1150  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2017_1.json &
+ 1151  mc
+ 1152  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_2019_09.json &
+ 1153  mc
+ 1154  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_search_2016.json &
+ 1155  mc
+ 1156  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_scrt_bm_accruals_2019_09.json &
+ 1157  mc
+ 1158  ps ax|grep python3.7
+ 1159  mc
+ 1160  ps ax|grep python3.7
+ 1161  mc
+ 1162  ps ax|grep python3.7
+ 1163  mc
+ 1164  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2017_2.json &
+ 1165  mc
+ 1166  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_search_2017.json &
+ 1167  mc
+ 1168  cd bigdata_export/
+ 1169  mc
+ 1170  ps ax|grep python3.7
+ 1171  cd bigdata_export/
+ 1172  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2018_1.json &
+ 1173  mc
+ 1174  ps ax|grep python3.7
+ 1175  mc
+ 1176  ps ax|grep python3.7
+ 1177  mc
+ 1178  cd bigdata_export/
+ 1179  mc
+ 1180  cd bigdata_export/
+ 1181  mc
+ 1182  ps ax|grep python3.7
+ 1183  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2018_2.json &
+ 1184  mc
+ 1185  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_search_2018.json &
+ 1186  mc
+ 1187  ps ax|grep python3.7
+ 1188  c
+ 1189  mc
+ 1190  mv
+ 1191  mc
+ 1192  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_search_2019_09.json &
+ 1193  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2018_2.json &
+ 1194  mc
+ 1195  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_reloc_data_2015.json &
+ 1196  mc
+ 1197  ps ax|grep python3.7
+ 1198  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_fact_dn_fact_vehicle_relocation_2018.json &
+ 1199  mc
+ 1200  ps ax|grep python3.7
+ 1201  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_vehicle_relocation_2018.json &
+ 1202  mc
+ 1203  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_reloc_data_2016.json &
+ 1204  mc
+ 1205  ps ax|grep python3.7
+ 1206  mv
+ 1207  mc
+ 1208  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2019_01_04.json &
+ 1209  mc
+ 1210  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_vehicle_relocation_2019_09.json &
+ 1211  mc
+ 1212  ps ax|grep python3.7
+ 1213  mc
+ 1214  ps ax|grep python3.7
+ 1215  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvres_2019_09.json &
+ 1216  mc
+ 1217  ps ax|grep python3.7
+ 1218  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvres_2019_09.json &
+ 1219  mc
+ 1220  ps ax|grep python3.7
+ 1221  mc
+ 1222  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2019_05_09.json &
+ 1223  mc
+ 1224  ps ax|grep python3.7
+ 1225  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvres_2019_09.json &
+ 1226  mc
+ 1227  ps ax|grep python3.7
+ 1228  kill 29047
+ 1229  ps ax|grep python3.7
+ 1230  mc
+ 1231  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_rametro_2019_09.json &
+ 1232  mc
+ 1233  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvraddon_2019_09.json &
+ 1234  ps ax|grep python3.7
+ 1235  mc
+ 1236  ps ax|grep python3.7
+ 1237  mc
+ 1238  ps ax|grep python3.7
+ 1239  mc
+ 1240  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2019_05_09.json &
+ 1241  mc
+ 1242  kill 56891
+ 1243  ps ax|grep python3.7
+ 1244  mc
+ 1245  ps ax|grep python3.7
+ 1246  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_dn_fact_pud_v2_2019_09.json &
+ 1247  mc
+ 1248  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_reloc_data_2016.json &
+ 1249  mc
+ 1250  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvraddon_2019_09.json &
+ 1251  mc
+ 1252  ps ax|grep python3.7
+ 1253  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvres_2019_09.json &
+ 1254  mc
+ 1255  ps ax|grep python3.7
+ 1256  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_rametro_2019_09.json &
+ 1257  mc
+ 1258  ps ax|grep python3.7
+ 1259  mc
+ 1260  ps ax|grep python3.7
+ 1261  mc
+ 1262  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_unsuccess_2019_09.json &
+ 1263  mc
+ 1264  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_small.json &
+ 1265  mc
+ 1266  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_aggr_customer_2019_09.json &
+ 1267  mc
+ 1268  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_service_orders_usg_v2_2019_09.json &
+ 1269  mc
+ 1270  ps ax|grep python3.7
+ 1271  mc
+ 1272  cd bigdata_export/
+ 1273  mc
+ 1274  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_unsuccess_2019_09.json &
+ 1275  mc
+ 1276  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jv_reloc_data_2016.json &
+ 1277  mc
+ 1278  ps ax|grep python3.7
+ 1279  mc
+ 1280  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_offer.json &
+ 1281  mc
+ 1282  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_small.json &
+ 1283  mc
+ 1284  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvmessage_to_2014.json &
+ 1285  mc
+ 1286  ps ax|grep python3.7
+ 1287  mc
+ 1288  ps ax|grep python3.7
+ 1289  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_c2g_jv_payment_instrument.json &
+ 1290  mc
+ 1291  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jv_payment_instrument_attr.json &
+ 1292  mc
+ 1293  ps ax|grep python3.7
+ 1294  mc
+ 1295  cd bigdata_export/
+ 1296  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvmessage_2014.json &
+ 1297  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jv_reloc_data_2017.json &
+ 1298  mc
+ 1299  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvmessage_2015.json &
+ 1300  mc
+ 1301  ps ax|grep python3
+ 1302  ps ax|grep python3.7
+ 1303  mc
+ 1304  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvmessage_2016.json &
+ 1305  mc
+ 1306  ps ax|grep python3.7
+ 1307  mc
+ 1308  exit
+ 1309  cd bigda
+ 1310  cd bigdata_export/
+ 1311  ls
+ 1312  mc
+ 1313  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvmessage_2017.json &
+ 1314  mc
+ 1315  ls
+ 1316  mc
+ 1317  ps ax|grep python3.7
+ 1318  mc
+ 1319  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvmessage_2018.json &
+ 1320  mc
+ 1321  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jv_reloc_data_2018.json &
+ 1322  mc
+ 1323  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvmessage_2019_09.json &
+ 1324  mc
+ 1325  ps ax|grep python3
+ 1326  exit
+ 1327  mc
+ 1328  ps ax|grep python3
+ 1329  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jv_reloc_data_2019_09.json &
+ 1330  mc
+ 1331  cd ..
+ 1332  ls
+ 1333  cd ml
+ 1334  mc
+ 1335  tnsping SXBIPRODX
+ 1336  tnsping SXBIPRDX
+ 1337  tnsping SXBIPRODX
+ 1338  ping sxrepdb-p1.sixt.de
+ 1339  ping sxrepdb-p2.sixt.de
+ 1340  ping sxrepdb-p3.sixt.de
+ 1341  mc
+ 1342  tnsping METPRDX
+ 1343  tnsping SXBIPRODX
+ 1344  crontab -l
+ 1345  nohup /home/bison/ml/customer_churn/scripts/predict.sh &
+ 1346  nohup /home/bison/ml/anomaly_detection_bm/scripts/predict.sh &
+ 1347  mc
+ 1348  [21~
+ 1349  tnsping SXBIPRODX
+ 1350  tnsping METPRDX
+ 1351  uptime
+ 1352  ps ax
+ 1353  ./venv/bin/python3.7 src/main.py prod.json tables_test.json
+ 1354  python3 TrainDemand.py 
+ 1355  tnsping METPRDX
+ 1356  tnsping SXBIPRODX
+ 1357  mc
+ 1358  tnsping SXBIPRODX
+ 1359  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_dim_small.json &
+ 1360  mc
+ 1361  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_dim_customer.json &
+ 1362  mc
+ 1363  nohup ./venv/bin/python3.7 src/main.py prod-prod.json table_dim_customer.json &
+ 1364  mc
+ 1365  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_small.json &
+ 1366  mc
+ 1367  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvmessage_2019_11_20.json &
+ 1368  mc
+ 1369  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jv_reloc_data_2019_11_20.json &
+ 1370  mc
+ 1371  ps ax|grep python3.7
+ 1372  nohup ./venv/bin/python3.7 src/main.py prod-prod.json c2g_jvraddon_2019_11_20 &
+ 1373  mc
+ 1374  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvraddon_2019_09.json &
+ 1375  mc
+ 1376  ps ax|grep python3.7
+ 1377  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvraddon_2019_11_20.json &
+ 1378  mc
+ 1379  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvraddon_2019_11_20.json &
+ 1380  mc
+ 1381  ps ax|grep python3.7
+ 1382  mc
+ 1383  cat /home/bison/.bashhistory |grep jvzone
+ 1384  cat /home/bison/.bashistory |grep jvzone
+ 1385  mc
+ 1386  cat /home/bison/.bash_history |grep jvzone
+ 1387  cat /home/bison/.bash_history
+ 1388  cat /home/bison/.bash_history |grep jv_small
+ 1389  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_small.json &
+ 1390  mc
+ 1391  ps ax|grep python3.7
+ 1392  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvres_2019_11_20.json &
+ 1393  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_rametro_2019_11_20.json &
+ 1394  ps ax|grep python3.7
+ 1395  cat /home/bison/.bash_history |grep jvbonus
+ 1396  ps ax|grep python3.7
+ 1397  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jvbonus_2019_11_20.json &
+ 1398  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jvbonusm_2019_11_20.json &
+ 1399  ps ax|grep python3.7
+ 1400  mc
+ 1401  cat /home/bison/.bash_history |grep jv_payment_instrument
+ 1402  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_c2g_jv_payment_instrument.json &
+ 1403  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jv_payment_instrument_attr.json &
+ 1404  ps ax|grep python3.7
+ 1405  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_c2g_jv_payment_instrument.json &
+ 1406  ps ax|grep python3.7
+ 1407  mc
+ 1408  ps ax|grep python3.7
+ 1409  mc
+ 1410  ps ax|grep python3.7
+ 1411  mc
+ 1412  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_fact_dn_fact_prd_usage_details_v2_2019_11_20.json &
+ 1413  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_fact_dn_fact_rental_2019_11_20.json &
+ 1414  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_fact_dn_fact_search_2019_11_20.json &
+ 1415  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_fact_dn_fact_vehicle_relocation_2019_11_20.json &
+ 1416  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_fact_dn_fact_rental_unsuccess_2019_11_20.json &
+ 1417  ps ax|grep python3.7
+ 1418  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2019_11_20.json &
+ 1419  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_2019_11_20.json &
+ 1420  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_search_2019_11_20.json &
+ 1421  ps ax|grep python3.7
+ 1422  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_vehicle_relocation_2019_11_20.json &
+ 1423  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_unsuccess_2019_11_20.json &
+ 1424  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_service_orders_usg_v2_2019_11_20.json &
+ 1425  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_refuel_v2_2019_11_20.json &
+ 1426  ps ax|grep python3.7
+ 1427  mc
+ 1428  ps ax|grep python3.7
+ 1429  mc
+ 1430  exit
+ 1431  tnsping metprdx
+ 1432  mc
+ 1433  tnsping sxbiprodx
+ 1434  mc
+ 1435  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_customer.json &
+ 1436  mc
+ 1437  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_dim_small.json &
+ 1438  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2020_01_14.json &
+ 1439  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_2020_01_14.json &
+ 1440  mc
+ 1441  ps ax|grep python3.7
+ 1442  top
+ 1443  ps ax|grep python3.7
+ 1444  mc
+ 1445  top
+ 1446  top 
+ 1447  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_search_2020_01_14.json &
+ 1448  mc
+ 1449  ps ax|grep python3.7
+ 1450  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_search_2020_01_14.json &
+ 1451  mc
+ 1452  top
+ 1453  mc
+ 1454  crontab -l
+ 1455  mc
+ 1456  ps ax|grep python3.7
+ 1457  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_scrt_bm_accruals_2020_01_14.json &
+ 1458  ps ax|grep python3.7
+ 1459  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_scrt_bm_accruals_2020_01_14.json &
+ 1460  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_vehicle_relocation_2020_01_14.json &
+ 1461  mc
+ 1462  ps ax|grep python3.7
+ 1463  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_vehicle_relocation_2020_01_14.json &
+ 1464  mc
+ 1465  ps ax|grep python3.7
+ 1466  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_unsuccess_2020_01_14.json &
+ 1467  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_aggr_customer_2020_01_14.json &
+ 1468  mc
+ 1469  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_service_orders_usg_v2_2020_01_14.json &
+ 1470  mc
+ 1471  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_refuel_v2_2020_01_14.json &
+ 1472  nohup ./venv/bin/python3.7 src/main.py core-prod.json tables_jvbonus_2020_01_14.json &
+ 1473  nohup ./venv/bin/python3.7 src/main.py core-prod.json tables_jvbonusm_2020_01_14.json &
+ 1474  mc
+ 1475  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jvbonus_2020_01_14.json &
+ 1476  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jvbonusm_2020_01_14.json &
+ 1477  mc
+ 1478  ps ax|grep python3.7
+ 1479  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_small.json &
+ 1480  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_small.json &
+ 1481  ps ax|grep python3.7
+ 1482  mc
+ 1483  ps ax|grep python3.7
+ 1484  mc
+ 1485  ps ax|grep python3.7
+ 1486  mc
+ 1487  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_payment_instrument.json &
+ 1488  mc
+ 1489  ps ax|grep python3.7
+ 1490  mc
+ 1491  ps ax|grep python3.7
+ 1492  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jv_payment_instrument_attr.json &
+ 1493  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvmessage_2020_01_14.json &
+ 1494  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jv_reloc_data_2020_01_14.json &
+ 1495  mc
+ 1496  ps ax|grep python3.7
+ 1497  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_offer.json &
+ 1498  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvraddon_2020_01_14.json &
+ 1499  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvres_2020_01_14.json &
+ 1500  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_rametro_2020_01_14.json &
+ 1501  mc
+ 1502  ps ax|grep python3.7
+ 1503  mc
+ 1504  ps ax|grep python3.7
+ 1505  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_offer.json &
+ 1506  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_qa_checking_detail.json &
+ 1507  nohup ./venv/bin/python3.7 src/main.py core-prod.json tables_jv_payment_instrument.json &
+ 1508  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_jv_payment_instrument_attr.json &
+ 1509  exit
+ 1510  mc
+ 1511  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_payment_instrument.json &
+ 1512  ps ax|grep python3.7
+ 1513  mc
+ 1514  ps ax|grep python3.7
+ 1515  MC
+ 1516  mc
+ 1517  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_offer.json &
+ 1518  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_jv_payment_instrument_attr.json &
+ 1519  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_payment_instrument.json &
+ 1520  mc
+ 1521  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_dim_small.json &
+ 1522  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_customer.json &
+ 1523  ps ax|grep python3
+ 1524  ps ax|grep python3.7
+ 1525  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2020_01_14.json &
+ 1526  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_2020_01_14.json &
+ 1527  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_search_2020_01_14.json &
+ 1528  ps ax|grep python3.7
+ 1529  mc
+ 1530  ps ax|grep python3.7
+ 1531  mc
+ 1532  ps ax|grep python3.7
+ 1533  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_scrt_bm_accruals_2020_01_14.json &
+ 1534  ps ax|grep python3.7
+ 1535  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_vehicle_relocation_2020_01_14.json &
+ 1536  ps ax|grep python3.7
+ 1537  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_unsuccess_2020_01_14.json &
+ 1538  ps ax|grep python3.7
+ 1539  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_aggr_customer_2020_01_14.json &
+ 1540  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_service_orders_usg_v2_2020_01_14.json &
+ 1541  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_refuel_v2_2020_01_14.json &
+ 1542  ps ax|grep python3.7
+ 1543  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_offer.json &
+ 1544  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jvbonus_2020_01_14.json &
+ 1545  nohup ./venv/bin/python3.7 src/main.py core_prod.json tab &
+ 1546  ps ax|grep python3.7
+ 1547  mc
+ 1548  ps ax|grep python3.7
+ 1549  mc
+ 1550  ps ax|grep python3.7
+ 1551  mc
+ 1552  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_small.json &
+ 1553  ps ax|grep python3.7
+ 1554  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jv_payment_instrument_attr.json &
+ 1555  ps ax|grep python3.7
+ 1556  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_small.json &
+ 1557  ps ax|grep python3.7
+ 1558  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jv_payment_instrument_attr.json &
+ 1559  ps ax|grep python3.7
+ 1560  mc
+ 1561  ps ax|grep python3.7
+ 1562  mc
+ 1563  ps ax|grep python3.7
+ 1564  mc
+ 1565  ps ax|grep python3.7
+ 1566  nohup ./venv/bin/python3.7 src/main.py prod-prod.json  &
+ 1567  ps ax|grep python3.7
+ 1568  cls
+ 1569  clear
+ 1570  ps ax|grep python3.7
+ 1571  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvmessage_2020_01_14.json  &
+ 1572  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jv_reloc_data_2020_01_14.json  &
+ 1573  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvraddon_2020_01_14.json  &
+ 1574  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvres_2020_01_14.json  &
+ 1575  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_rametro_2020_01_14.json  &
+ 1576  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_payment_instrument.json  &
+ 1577  ps ax|grep python3.7
+ 1578  clear
+ 1579  ps ax|grep python3.7
+ 1580  mc
+ 1581  ps ax|grep python3.7
+ 1582  mc
+ 1583  grep -il "DN_FACT_OFFER" /log
+ 1584  grep -il "DN_FACT_OFFER" /logs
+ 1585  cd logs
+ 1586  ls
+ 1587  cd log
+ 1588  grep -il "DN_FACT_OFFER" /logs
+ 1589  grep -il "DN_FACT_OFFER"
+ 1590  cd ..
+ 1591  grep -il "DN_FACT_OFFER" ~/bigdata_export/log
+ 1592  grep -il "DN_FACT_OFFER" ~/bigdata_export/log/
+ 1593  grep -il "DN_FACT_OFFER" '~/bigdata_export/log/'
+ 1594  grep -il "DN_FACT_OFFER" '~/bigdata_export/log'
+ 1595  pwd
+ 1596  grep -il "DN_FACT_OFFER" '/home/bison/bigdata_export/log'
+ 1597  grep -il "DN_FACT_OFFER" /home/bison/bigdata_export/log/*.*
+ 1598  grep -il "DN_FACT_OFFER" /home/bison/bigdata_export/log/*
+ 1599  cat /home/bison/bigdata_export/log/log_2020-01-27-14-57-02-447649.txt
+ 1600  grep -il "DN_FACT_OFFER" /home/bison/bigdata_export/log/*
+ 1601  mc
+ 1602  cd ..
+ 1603  ls
+ 1604  pws
+ 1605  pwd
+ 1606  cd aa
+ 1607  cd app
+ 1608  ls
+ 1609  cd bison
+ 1610  ls
+ 1611  cd product/
+ 1612  ls
+ 1613  cd 18.0.0/
+ 1614  ls
+ 1615  cd client_1/
+ 1616  ls
+ 1617  cd jdbc
+ 1618  ls
+ 1619  cd lib/
+ 1620  ls
+ 1621  pwd
+ 1622  cd ~
+ 1623  ls
+ 1624  ls -a
+ 1625  ls /?
+ 1626  man ls
+ 1627  ls -l
+ 1628  md lac
+ 1629  mkdir lac
+ 1630  cd lac
+ 1631  pwd
+ 1632  mc
+ 1633  .. OB
+ 1634  [21~
+ 1635  cd /opt/nifi-current/lib/
+ 1636  ls oj*
+ 1637  mc
+ 1638  ks
+ 1639  ды
+ 1640  ls
+ 1641  cd ~
+ 1642  pwd
+ 1643  mc
+ 1644  ls
+ 1645  mc
+ 1646  ls
+ 1647  cd app/bison/
+ 1648  ls
+ 1649  cd product/18.0.0/client_1/
+ 1650  ls
+ 1651  cd jdb
+ 1652  cd jdbc/
+ 1653  ls
+ 1654  cd lib/
+ 1655  ls
+ 1656  pwd
+ 1657  mc
+ 1658  cd ~
+ 1659  cd lac
+ 1660  ls
+ 1661  del *.*
+ 1662  rm *.*
+ 1663  rm *
+ 1664  man rm
+ 1665  rm * /f
+ 1666  mc
+ 1667  man chmod
+ 1668  chmod 777 *
+ 1669  mc
+ 1670  cd ../lac
+ 1671  mc
+ 1672  pwd
+ 1673  cd failure/
+ 1674  pwd
+ 1675  mc
+ 1676  cd ..
+ 1677  cd ls
+ 1678  cd lac/
+ 1679  ls -;
+ 1680  ls -l
+ 1681  mc
+ 1682  pwd
+ 1683  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_offer.json  &
+ 1684  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_qa_checking_detail.json  &
+ 1685  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_payment_instrument.json  &
+ 1686  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jv_payment_instrument_attr.json  &
+ 1687  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_dim_dm_rpr_invoices.json  &
+ 1688  ps ax|grep python3.7
+ 1689  mc
+ 1690  top
+ 1691  mc
+ 1692  cd
+ 1693  ssh-keygen 
+ 1694  cat .ssh/id_rsa.pub 
+ 1695  ssh ubuntu@3.122.195.141 
+ 1696  ssh bison@3.122.195.141 
+ 1697  cd ../lac
+ 1698  ls -l
+ 1699  aws s3 ls s3://0511-4892-2428-bucket
+ 1700  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket
+ 1701  ssh bison@3.122.195.141 aws cp help
+ 1702  ssh bison@3.122.195.141 aws s3 cp help
+ 1703  ls -l
+ 1704  ssh bison@3.122.195.141 aws s3 cp ~/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1705  mc
+ 1706  cat /home/bison/lac/LWHLV.avro
+ 1707  PuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTY6cPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYy
+ 1708  mc
+ 1709  cd ../lac
+ 1710  ls -l
+ 1711  ssh bison@3.122.195.141 aws s3 cp ~/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/
+ 1712  cat /home/bison/lac/LWHLV.avro
+ 1713  PuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTY6cPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTY6cPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTY6cPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTY6cPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYPuTTYy
+ 1714  ssh bison@3.122.195.141 aws s3 cp ~/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/
+ 1715  ssh bison@3.122.195.141 aws s3 ls  s3://0511-4892-2428-bucket/lwhlv/
+ 1716  ssh bison@3.122.195.141 aws s3 cp ~/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1717  ssh bison@3.122.195.141 aws s3 ls  s3://0511-4892-2428-bucket/lwhlv/
+ 1718  ssh bison@3.122.195.141 aws s3 cp ~/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1719  ssh bison@3.122.195.141 aws s3 --debug cp ~/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1720  ssh bison@3.122.195.141 aws s3 --debug cp LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1721  ls -l
+ 1722  ssh bison@3.122.195.141 aws s3 --debug cp LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1723  ssh bison@3.122.195.141 aws s3 --debug cp LWHLV.avro s3://0511-4892-2428-bucket/
+ 1724  ssh bison@3.122.195.141 aws s3 --debug cp ~/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1725  ssh bison@3.122.195.141 aws s3 --debug cp ~/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/
+ 1726  rsync -avz ~/lac/LWHLV.avro bison@3.122.195.141:/s3bucket
+ 1727  mount
+ 1728  mount|grep nfs
+ 1729  ssh bison@3.122.195.141 aws s3 --debug cp ~/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/
+ 1730  rsync -avz ~/lac/LWHLV.avro bison@3.122.195.141:/s3bucket
+ 1731  ssh bison@3.122.195.141 aws s3 --debug cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/
+ 1732  mount -a
+ 1733  [21~
+ 1734  /usr/bin/ssh bison@3.122.195.141 /usr/local/bin/aws s3 cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/
+ 1735  ssh bison@3.122.195.141 aws s3  cp ~/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/
+ 1736  mc
+ 1737  test -f ~/lac/LWHLV.avro
+ 1738  test -f ~/lac/LWHLV.avro1
+ 1739  test -f ~/lac/LWHLV.avro
+ 1740  test -f ~/lac/LWHLV.avro;
+ 1741  mc
+ 1742  ssh bison@3.122.195.141 aws --debug s3  cp ~/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/
+ 1743  mc
+ 1744  ssh bison@3.122.195.141 aws --debug s3  cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/
+ 1745  ssh bison@3.122.195.141 aws s3 --debug cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/
+ 1746  ssh bison@3.122.195.141 aws s3  cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/
+ 1747  mc
+ 1748  cp ~/lac/LWHLV.avro /s3bucket/
+ 1749  mc
+ 1750  ,c
+ 1751  mc
+ 1752  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1753  ssh bison@3.122.195.141 aws s3 rm s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1754  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1755  mc
+ 1756  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1757  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1758  ssh bison@3.122.195.141 aws s3 rm s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1759  mc
+ 1760  ssh bison@3.122.195.141 aws s3 rm s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1761  bash ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1762  .ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1763  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1764  mc
+ 1765  ssh bison@3.122.195.141 aws s3 cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/
+ 1766  sh "ssh bison@3.122.195.141 aws s3 cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/"
+ 1767  mc
+ 1768  "ssh bison@3.122.195.141 aws s3 cp  /home/bison/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro"
+ 1769  echo $0
+ 1770  bash "ssh bison@3.122.195.141 aws s3 cp  /home/bison/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro"
+ 1771  mc
+ 1772  printenv
+ 1773  whereis ssh
+ 1774  bash "/usr/bin/ssh bison@3.122.195.141 aws s3 cp  /home/bison/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro"
+ 1775  bash "/etc/ssh bison@3.122.195.141 aws s3 cp  /home/bison/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro"
+ 1776  bash "ssh bison@3.122.195.141 aws s3 cp  /home/bison/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro"
+ 1777  bash "ssh bison@3.122.195.141 aws s3 cp /home/bison/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro"
+ 1778  bash 'ssh bison@3.122.195.141 aws s3 cp /home/bison/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro'
+ 1779  bash -x "ssh bison@3.122.195.141 aws s3 cp /home/bison/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro"
+ 1780  ssh bison@3.122.195.141 aws s3 cp /home/bison/lac/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1781  ssh bison@3.122.195.141 aws s3 cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1782  "ssh bison@3.122.195.141 aws s3 cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro"
+ 1783  mc
+ 1784  "ssh22 bison@3.122.195.141 aws s3 cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro"
+ 1785  "ssh"
+ 1786  bash  $(ssh bison@3.122.195.141 aws s3 cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro)
+ 1787  bash -x $(ssh bison@3.122.195.141 aws s3 cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro)
+ 1788  ls -la /
+ 1789  mc
+ 1790  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/
+ 1791  ls -la /s3bucket/
+ 1792  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/
+ 1793  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1794  ssh bison@3.122.195.141 aws s3 rm s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1795  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1796  mc
+ 1797  which ssh
+ 1798  which aws
+ 1799  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/
+ 1800  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/lwhlv
+ 1801  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1802  mc
+ 1803  /usr/bin/ssh bison@3.122.195.141 /usr/local/bin/aws s3 cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/
+ 1804  ssh bison@3.122.195.141 aws s3 rm s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1805  "/usr/bin/ssh bison@3.122.195.141 /usr/local/bin/aws s3 cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/"
+ 1806  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1807  ssh bison@3.122.195.141 aws --debug s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1808  clear
+ 1809  ssh bison@3.122.195.141 aws --debug s3 ls s3://0511-4892-2428-bucket/
+ 1810  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1811  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/
+ 1812  ssh bison@3.122.195.141 aws --debug s3 ls s3://0511-4892-2428-bucket/
+ 1813  exit
+ 1814  ssh bison@3.122.195.141 aws --debug s3 ls s3://0511-4892-2428-bucket/
+ 1815  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/
+ 1816  ssh bison@3.122.195.141 aws --debug s3 ls s3://0511-4892-2428-bucket/
+ 1817  exit
+ 1818  ssh bison@3.122.195.141 aws --debug s3 ls s3://0511-4892-2428-bucket/
+ 1819  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/
+ 1820  aws  s3 ls s3://0511-4892-2428-bucket/
+ 1821  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/
+ 1822  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/lwhlv
+ 1823  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1824  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket
+ 1825  ls /s3bucket/
+ 1826  ls -l /s3bucket/
+ 1827  ssh bison@3.122.195.141 aws s3 ls s3://0511-4892-2428-bucket
+ 1828  mc
+ 1829  /usr/bin/ssh -i /home/bison/.ssh/id_rsa bison@3.122.195.141 /usr/local/bin/aws s3 cp /s3bucket/LWHLV.avro s3://0511-4892-2428-bucket/lwhlv/LWHLV.avro
+ 1830  mc
+ 1831  ssh bison@3.122.195.141 aws --debug s3 ls s3://0511-4892-2428-bucket/
+ 1832  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/
+ 1833  mc
+ 1834  ssh bison@3.122.195.141 
+ 1835  cd
+ 1836  cat .ssh/id_rsa.pub 
+ 1837  ssh 52.59.42.1
+ 1838  ipconfig
+ 1839  ifconfig
+ 1840  ssh bison@3.122.195.141 aws --debug s3 ls s3://0511-4892-2428-bucket/
+ 1841  ssh bison@52.59.42.1 aws --debug s3 ls s3://0511-4892-2428-bucket/
+ 1842  ssh bison@52.59.42.1 /usr/local/bin/aws --debug s3 ls s3://0511-4892-2428-bucket/
+ 1843  ssh bison@3.122.195.141 aws --debug s3 ls s3://0511-4892-2428-bucket/
+ 1844  ssh bison@3.122.195.141 
+ 1845  ssh bison@52.59.42.1
+ 1846  ssh bison@52.59.42.1 /snap/bin/aws --debug s3 ls s3://0511-4892-2428-bucket/
+ 1847  ssh bison@52.59.42.1 /snap/bin/aws  s3 ls s3://0511-4892-2428-bucket/
+ 1848  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/
+ 1849  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/lwhlv
+ 1850  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/lwhlv/
+ 1851  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/
+ 1852  mc
+ 1853  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/
+ 1854  mc
+ 1855  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/
+ 1856  mc
+ 1857  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/
+ 1858  mc
+ 1859  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/
+ 1860  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/lwhpartkd/
+ 1861  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/
+ 1862  ssh bison@3.122.195.141 aws  s3 ls s3://0511-4892-2428-bucket/ --recursive
+ 1863  ssh bison@52.59.42.1 /snap/bin/aws  s3 ls s3://0511-4892-2428-bucket/ --recursive
+ 1864  ls /s3bucket
+ 1865  mc
+ 1866  top
+ 1867  mc
+ 1868  /usr/bin/ssh -i /home/bison/.ssh/id_rsa bison@52.59.42.1 /snap/bin/aws s3 cp /s3bucket/PROFC.avro s3://0511-4892-2428-bucket/profc/
+ 1869  mc
+ 1870  ~mc
+ 1871  mc
+ 1872  ssh bison@52.59.42.1 /snap/bin/aws  s3 ls s3://0511-4892-2428-bucket/ --recursive
+ 1873  mc
+ 1874  ssh bison@52.59.42.1 /snap/bin/aws  s3 ls s3://0511-4892-2428-bucket/ --recursive
+ 1875  mc
+ 1876  tail /opt/nifi-current/logs/nifi-app.log
+ 1877  tail /opt/nifi-current/logs/nifi-app.log -f
+ 1878  mc
+ 1879  tail /opt/nifi-current/logs/nifi-app.log
+ 1880  mc
+ 1881  tail /opt/nifi-current/logs/nifi-app.log 
+ 1882  tail -f /opt/nifi-current/logs/nifi-app.log | grep failed
+ 1883  ssh bison@52.59.42.1 /snap/bin/aws  s3 ls s3://0511-4892-2428-bucket/ --recursive
+ 1884  mc
+ 1885  .. 
+ 1886  ps as | grep python3.7
+ 1887  ps xs | grep python3.7
+ 1888  ps ax | grep python3.7
+ 1889  mc
+ 1890  ssh bison@52.59.42.1 /snap/bin/aws  s3 ls s3://0511-4892-2428-bucket/ --recursive
+ 1891  mc
+ 1892  nohup ./venv/bin/python3.7 src/main.py prod.json tables_fact_dn_fact_offer.json  &
+ 1893  mc
+ 1894  nohup ./venv/bin/python3.7 src/main.py prod.json tables_fact_dn_fact_qa_checking_detail.json  &
+ 1895  ps ax|grep python3.7
+ 1896  mc
+ 1897  nohup ./venv/bin/python3.7 src/main.py core_int.json tables_jv_payment_instrument.json  &
+ 1898  nohup ./venv/bin/python3.7 src/main.py core_int.json tables_jv_payment_instrument_attr.json  &
+ 1899  nohup ./venv/bin/python3.7 src/main.py prod.json tables_dim_dm_rpr_invoices.json  &
+ 1900  mc
+ 1901  ps ax|grep python3.7
+ 1902  mc
+ 1903  ps ax|grep python3.7
+ 1904  man kill
+ 1905  ps ax|grep python3.7
+ 1906  kill 50713
+ 1907  kill 50787
+ 1908  ps ax|grep python3.7
+ 1909  mc
+ 1910  ps ax|grep python3.7
+ 1911  mc
+ 1912  ps ax|grep python3.7
+ 1913  kill 49773
+ 1914  ps ax|grep python3.7
+ 1915  mc
+ 1916  ps ax|grep python3.7
+ 1917  mc
+ 1918  nohup ./venv/bin/python3.7 src/main.py prod.json tables_fact_dn_fact_offer.json  &
+ 1919  nohup ./venv/bin/python3.7 src/main.py prod.json tables_fact_dn_fact_qa_checking_detail.json  &
+ 1920  nohup ./venv/bin/python3.7 src/main.py core_int.json tables_jv_payment_instrument.json  &
+ 1921  nohup ./venv/bin/python3.7 src/main.py core_int.json tables_jv_payment_instrument_attr.json  &
+ 1922  nohup ./venv/bin/python3.7 src/main.py prod.json tables_dim_dm_rpr_invoices.json  &
+ 1923  mc
+ 1924  ps ax|grep python3.7
+ 1925  kill 55066
+ 1926  kill 55071
+ 1927  kill 55151
+ 1928  kill 55216
+ 1929  kill 55240
+ 1930  ps ax|grep python3.7
+ 1931  mc
+ 1932  nohup ./venv/bin/python3.7 src/main.py prod.json tables_fact_dn_fact_offer.json  &
+ 1933  nohup ./venv/bin/python3.7 src/main.py prod.json tables_fact_dn_fact_qa_checking_detail.json  &
+ 1934  nohup ./venv/bin/python3.7 src/main.py core_int.json tables_jv_payment_instrument.json  &
+ 1935  nohup ./venv/bin/python3.7 src/main.py core_int.json tables_jv_payment_instrument_attr.json  &
+ 1936  nohup ./venv/bin/python3.7 src/main.py prod.json tables_dim_dm_rpr_invoices.json  &
+ 1937  ps ax|grep python3.7
+ 1938  mc
+ 1939  ps ax|grep python3.7
+ 1940  mc
+ 1941  ps ax|grep python3.7
+ 1942  mc
+ 1943  ssh bison@52.59.42.1 /snap/bin/aws  s3 ls s3://0511-4892-2428-bucket/ --recursive
+ 1944  mc
+ 1945  ssh bison@52.59.42.1 /snap/bin/aws s3 cp /s3bucket/t1.avro s3://0511-4892-2428-bucket/t1/
+ 1946  ssh bison@52.59.42.1 /snap/bin/aws  s3 ls s3://0511-4892-2428-bucket/ --recursive
+ 1947  mc
+ 1948  ssh bison@52.59.42.1 /snap/bin/aws s3 cp /s3bucket/t1.avro s3://0511-4892-2428-bucket/t1/
+ 1949  mc
+ 1950  ssh bison@52.59.42.1 /snap/bin/aws s3 cp /s3bucket/t1.avro s3://0511-4892-2428-bucket/t1/
+ 1951  mc
+ 1952  ssh bison@52.59.42.1 /snap/bin/aws s3 cp /s3bucket/t1.avro s3://0511-4892-2428-bucket/t1/
+ 1953  mc
+ 1954  ssh bison@52.59.42.1 /snap/bin/aws s3 cp /s3bucket/t1.avro s3://0511-4892-2428-bucket/t1/
+ 1955  mc
+ 1956  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_offer.json  &
+ 1957  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_qa_checking_detail.json  &
+ 1958  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_payment_instrument.json  &
+ 1959  nohup ./venv/bin/python3.7 src/main.py core_prod.json tables_jv_payment_instrument_attr.json  &
+ 1960  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_dim_dm_rpr_invoices.json  &
+ 1961  mc
+ 1962  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_prd_usage_details_v2_2020_02_19.json  &
+ 1963  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_2020_02_19.json  &
+ 1964  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_search_2020_02_19.json  &
+ 1965  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_scrt_bm_accruals_2020_02_19.json  &
+ 1966  mc
+ 1967  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_vehicle_relocation_2020_02_19.json  &
+ 1968  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_rental_unsuccess_2020_02_19.json  &
+ 1969  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_fact_dn_fact_aggr_customer_2020_02_19.json  &
+ 1970  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_customer.json  &
+ 1971  mc
+ 1972  ps ax |grep python3.7
+ 1973  nohup ./venv/bin/python3.7 src/main.py prod-prod.json tables_c2g_jvraddon_2020_02_19.json  &
+ 1974  ps ax |grep python3.7
+ 1975  mc
+ 1976  [2~
+ 1977  cd log
+ 1978  grep -r error *
+ 1979  grep error *
+ 1980  clear
+ 1981  grep error *
+ 1982  mc
+ 1983  top
+ 1984  mc
+ 1985  crontab -e
+ 1986  mc
+ 1987  crontab -e
+ 1988  df
+ 1989  cd /dev/vdal
+ 1990  cd /dev/vdal/
+ 1991  mc
+ 1992  df
+ 1993  mc
+ 1994  df
+ 1995  mc
+ 1996  pws
+ 1997  pwd
+ 1998  du -hs /home/bison
+ 1999  du -hs /home/bison/ml
+ 2000  du -hs /home/bison/
+ 2001  du -hs /home/bison/*.*
+ 2002  du -h /home/bison
+ 2003  mx
+ 2004  du -hs /home/bison
+ 2005  du -hs /home/bison/ml
+ 2006  ls -l /home/bison
+ 2007  ls -la /home/bison/anomaly
+ 2008  du -hs /home/bison/ml/an
+ 2009  du -hs /home/bison/ml/anomaly_detection_ml
+ 2010  du -hs /home/bison/ml/anomaly_detection_bm
+ 2011  du -hs /home/bison/ml/customer_churn
+ 2012  du -hs /home/bison/ml/relocation
+ 2013  du -hs /home/bison/ml/ts_metrics
+ 2014  du -h --max-depth=1 /home/bison/ml/ts_metrics
+ 2015  du -h --max-depth=1 /home/bison/ml/relocation
+ 2016  du -h --max-depth=1 /opt
+ 2017  du -h --max-depth=1 /opt/nifi-toolkit-1.11.0
+ 2018  df
+ 2019  du -h --max-depth=1 /opt/nifi-toolkit-1.11.0
+ 2020  du -h --max-depth=1 /home/bison
+ 2021  mc
+ 2022  du -h --max-depth=1 /home/bison
+ 2023  mc
+ 2024  du -h --max-depth=1 /home/bison/bigdata_export
+ 2025  mc
+ 2026  du -h --max-depth=1 /home/bison/bigdata_export
+ 2027  du -h --max-depth=1 /home/bison/
+ 2028  df
+ 2029  mc
+ 2030  df
+ 2031  mc
+ 2032  crontab -e
+ 2033  mc
+ 2034  top
+ 2035  df
+ 2036  mc
+ 2037  cd ..
+ 2038  ls *hist
+ 2039  ls *hist*
+ 2040  ls *hist*.*
+ 2041  ls 
+ 2042  ls -ll
+ 2043  history
+ 2044  history >> bash_history.txt
