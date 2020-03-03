@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "dn_fact_rental_unsuccess", "predicate": "date_reservation >= TO_DATE('19.02.2020', 'dd.mm.yyyy')"}
+    ]
+}

@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "dn_fact_service_orders_usg_v2", "predicate":"end_date >= TO_DATE('19.02.2020', 'dd.mm.yyyy')"}
+    ]
+}

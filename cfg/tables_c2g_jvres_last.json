@@ -1,0 +1,6 @@
+{
+  "tables":
+    [
+      {"name": "c2g_jvres_last", "schema_name": "jvres"}
+    ]
+}
